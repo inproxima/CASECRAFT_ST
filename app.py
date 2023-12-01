@@ -175,27 +175,27 @@ else:
                     **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
 
                     **1. Scenario Background**
-                    **Setting:** Specify the professional environment (e.g., corporate, healthcare, technology, government). Include details about the organization type (e.g., small business, multinational corporation, public sector, non-profit).
-                    **Characters:** Introduce the main characters involved, including adult learners with specific professional backgrounds, job roles, experience levels, and personal traits. Include other relevant characters like colleagues, supervisors, clients, or industry stakeholders.
-                    **Initial Conditions:** Describe the initial conditions and circumstances leading up to the scenario, setting the stage for the narrative. This could include organizational changes, market shifts, technological advancements, or interpersonal dynamics at the workplace.
+                    - **Setting:** Specify the professional environment (e.g., corporate, healthcare, technology, government). Include details about the organization type (e.g., small business, multinational corporation, public sector, non-profit).
+                    - **Characters:** Introduce the main characters involved, including adult learners with specific professional backgrounds, job roles, experience levels, and personal traits. Include other relevant characters like colleagues, supervisors, clients, or industry stakeholders.
+                    - **Initial Conditions:** Describe the initial conditions and circumstances leading up to the scenario, setting the stage for the narrative. This could include organizational changes, market shifts, technological advancements, or interpersonal dynamics at the workplace.
                     
                     **2. Complexity and Realism**
 
-                    **Multiple Layers:** Ensure the scenario has multiple layers of complexity, reflecting real-world professional situations and adult learning challenges.
-                    Diverse Perspectives:** Include diverse perspectives and backgrounds, representing the variety of experiences in a professional environment in Canada.
-                    Realistic Challenges:** Present challenges authentic to the professional context, pertinent to current industry trends, workplace dynamics, and adult learning principles.
+                    - **Multiple Layers:** Ensure the scenario has multiple layers of complexity, reflecting real-world professional situations and adult learning challenges.
+                    - **Diverse Perspectives:** Include diverse perspectives and backgrounds, representing the variety of experiences in a professional environment in Canada.
+                    - **Realistic Challenges:** Present challenges authentic to the professional context, pertinent to current industry trends, workplace dynamics, and adult learning principles.
                     
                     **3. Ethical and Professional Considerations**
 
-                    Moral Dilemmas:** Introduce ethical or moral dilemmas relevant to the professional setting, ensuring no clear right or wrong answers, such as conflicts of interest, ethical use of data, or balancing company policy with personal values.
-                    Professional Standards:** Align scenarios with professional standards, industry regulations, and organizational policies, reflecting realistic professional challenges.
-                    Cultural Sensitivity:** Ensure scenarios are culturally sensitive and inclusive, respecting diverse professional and personal backgrounds.
+                    - **Moral Dilemmas:** Introduce ethical or moral dilemmas relevant to the professional setting, ensuring no clear right or wrong answers, such as conflicts of interest, ethical use of data, or balancing company policy with personal values.
+                    - **Professional Standards:** Align scenarios with professional standards, industry regulations, and organizational policies, reflecting realistic professional challenges.
+                    - **Cultural Sensitivity:** Ensure scenarios are culturally sensitive and inclusive, respecting diverse professional and personal backgrounds.
                     
                     **4. Decision Points**
 
-                    **Critical Choices:** Provide key decision points in the scenario where the participant must choose a course of action in response to the situation.
-                    **Consequences:** Outline the potential consequences (both positive and negative) for each decision, taking into account the professional context.
-                    **Reflective Questions:** Include reflective questions at the end of the scenario to prompt deeper thinking about the choices made, their implications, and alternative strategies.
+                    - **Critical Choices:** Provide key decision points in the scenario where the participant must choose a course of action in response to the situation.
+                    - **Consequences:** Outline the potential consequences (both positive and negative) for each decision, taking into account the professional context.
+                    - **Reflective Questions:** Include reflective questions at the end of the scenario to prompt deeper thinking about the choices made, their implications, and alternative strategies.
                     
                  
                     Additional Guidelines for Diversity and Inclusion
