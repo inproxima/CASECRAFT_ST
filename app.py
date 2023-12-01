@@ -24,128 +24,260 @@ OpenAI.api_key = os.getenv("OPENAI_API_KEY")
 api = OpenAI.api_key
 
 #functions
-def generate_response(prompt):
-    client = OpenAI()
 
-    completion = client.chat.completions.create(
-        model="gpt-4",
-        messages=[
-            {"role": "system", "content": """
-                **Objective**: Generate a detailed educational case scenario for a Canadian K-12 setting. Ensure the following:
-
-                **1. Scenario Background**
-                - **Setting**: Specify the grade level, subject area, and type of school (e.g., public, private, urban, rural).
-                - **Characters**: Introduce the main characters involved, including students with specific traits (e.g., learning styles, behavioral characteristics), fellow teachers, and possibly parents or guardians.
-                - **Initial Conditions**: Describe the initial conditions and circumstances leading up to the scenario, setting the stage for the narrative.
-
-                **2. Complexity and Realism**
-                - **Multiple Layers**: Ensure the scenario has multiple layers of complexity, accurately reflecting real-world classroom situations.
-                - **Diverse Perspectives**: Incorporate diverse perspectives and backgrounds to represent a broad spectrum of classroom experiences.
-                - **Realistic Challenges**: Present challenges that are authentic, relevant, and pertinent to the current educational context of the scenario.
-
-                **3. Ethical and Professional Considerations**
-                - **Moral Dilemmas**: Introduce ethical or moral dilemmas relevant to the scenario, ensuring there are no clear right or wrong answers.
-                - **Professional Standards**: Align the scenario with professional teaching standards and educational policies, ensuring it reflects realistic professional challenges.
-                - **Cultural Sensitivity**: Craft the scenario to be culturally sensitive and inclusive, respecting diverse backgrounds and viewpoints.
-
-                **4. Decision Points**
-                - **Critical Choices**: Provide key decision points in the scenario where the user (teacher) must choose a course of action in response to the situation. Ensure diversity in teacher and student selection.
-"""},
-            {"role": "user", "content": prompt}
-        ]
-    )
-
-    return completion.choices[0].message.content
 
 
 #Sidebar settings
+st.sidebar.subheader("Please select the educational context")
+setting = st.sidebar.radio("",["K-12","Adult professional learning"])
+
+#choices
 st.sidebar.header("Choices")
 
-case_category = st.sidebar.selectbox(
-    "To generate a case, please select for one of the following categories:",
-    ("Classroom Management", "Inclusive Education", "Professional Dilemmas","Pedagogical Challenges","Parent and Community Engagement", "Student Well-being and Mental Health", "Assessment and Evaluation", "Cultural and Linguistic Diversity", "Professional Development and Self-Reflection","Educational Policy and Administration","Sustainability and Environmental Education")
-)
+if setting =="K-12":
 
-if case_category == "Classroom Management":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Classroom Management",
-        ("Classroom environment", "Implementing discipline strategies", "dealing with challenging behaviors")
+    def generate_response(prompt, setting):
+        client = OpenAI()
+
+        completion = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": """
+                    **Objective**: Generate a detailed educational case scenario for an Canadian {setting} setting. Ensure the following:
+
+                    **1. Scenario Background**
+                    - **Setting**: Specify the grade level, subject area, and type of school (e.g., public, private, urban, rural).
+                    - **Characters**: Introduce the main characters involved, including students with specific traits (e.g., learning styles, behavioral characteristics), fellow teachers, and possibly parents or guardians.
+                    - **Initial Conditions**: Describe the initial conditions and circumstances leading up to the scenario, setting the stage for the narrative.
+
+                    **2. Complexity and Realism**
+                    - **Multiple Layers**: Ensure the scenario has multiple layers of complexity, accurately reflecting real-world classroom situations.
+                    - **Diverse Perspectives**: Incorporate diverse perspectives and backgrounds to represent a broad spectrum of classroom experiences.
+                    - **Realistic Challenges**: Present challenges that are authentic, relevant, and pertinent to the current educational context of the scenario.
+
+                    **3. Ethical and Professional Considerations**
+                    - **Moral Dilemmas**: Introduce ethical or moral dilemmas relevant to the scenario, ensuring there are no clear right or wrong answers.
+                    - **Professional Standards**: Align the scenario with professional teaching standards and educational policies, ensuring it reflects realistic professional challenges.
+                    - **Cultural Sensitivity**: Craft the scenario to be culturally sensitive and inclusive, respecting diverse backgrounds and viewpoints.
+
+                    **4. Decision Points**
+                    - Critical Choices: Provide key decision points in the scenario where the participant must choose a course of action in response to the situation.
+                    - Consequences: Outline the potential consequences (both positive and negative) for each decision, taking into account the professional context.
+                    - Reflective Questions: Include reflective questions at the end of the scenario to prompt deeper thinking about the choices made, their implications, and alternative strategies.
+                    - Additional Guidelines for Diversity and Inclusion
+
+                    Ensure diversity in the representation of characters in terms of gender, ethnicity, age, and professional background.
+    """},
+                {"role": "user", "content": prompt}
+            ]
+        )
+
+        return completion.choices[0].message.content
+
+    case_category = st.sidebar.selectbox(
+        "To generate a case, please select for one of the following categories:",
+        ("Classroom Management", "Inclusive Education", "Professional Dilemmas","Pedagogical Challenges","Parent and Community Engagement", "Student Well-being and Mental Health", "Assessment and Evaluation", "Cultural and Linguistic Diversity", "Professional Development and Self-Reflection","Educational Policy and Administration","Sustainability and Environmental Education")
     )
 
-elif case_category == "Inclusive Education":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Inclusive Education",
-        ("Classroom environment", "Differentiating instruction for special needs students", "Accommodating diverse learners","Cultural inclusivity"," Language barriers", "Integrating students with disabilities")
+    if case_category == "Classroom Management":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Classroom Management",
+            ("Classroom environment", "Implementing discipline strategies", "dealing with challenging behaviors")
+        )
+
+    elif case_category == "Inclusive Education":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Inclusive Education",
+            ("Classroom environment", "Differentiating instruction for special needs students", "Accommodating diverse learners","Cultural inclusivity"," Language barriers", "Integrating students with disabilities")
+        )
+
+    elif case_category == "Professional Dilemmas":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Professional Dilemmas",
+            ("Managing teacher-student boundaries", "Confidentiality scenarios","Responding to unethical behavior among colleagues")
+        )
+
+    elif case_category == "Pedagogical Challenges":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Pedagogical Challenges",
+            ("Implementing new teaching methodologies", "Technology integration challenges", "Engaging disinterested students","curriculum delivery issues")
+        )
+
+    elif case_category == "Parent and Community Engagement":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Parent and Community Engagement",
+            ("Handling parent-teacher meetings", "addressing parental concerns", "Involving the community in education", "managing conflicts with parents")
+        )
+
+    elif case_category == "Student Well-being and Mental Health":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Student Well-being and Mental Health",
+            ("Recognizing and addressing student mental health issues", "Bullying and social conflicts", "Promoting student resilience", "Supporting emotional well-being")
+        )
+
+    elif case_category == "Assessment and Evaluation":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Assessment and Evaluation",
+            ("Fair and effective grading practices", "providing constructive feedback", "dealing with academic dishonesty", "assessing student learning progress")
+        )
+
+    elif case_category == "Cultural and Linguistic Diversity":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Cultural and Linguistic Diversity",
+            ("Teaching in a multilingual classroom", "Respecting and incorporating cultural differences", "Overcoming language barriers", "Celebrating diversity in the classroom")
+        )
+
+    elif case_category == "Professional Development and Self-Reflection":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Professional Development and Self-Reflection",
+            ("Reflecting on personal teaching practice", "Pursuing continuous professional development", "Mentorship and collaboration challenges", "Career progression scenarios")
+        )
+
+    elif case_category == "Educational Policy and Administration":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Educational Policy and Administration",
+            ("Navigating educational policies", "School administration challenges", "Adapting to curriculum changes", "Dealing with bureaucratic constraints")
+        )
+
+    elif case_category == "Sustainability and Environmental Education":
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Educational Policy and Administration",
+            ("Integrating sustainability into the curriculum", "Fostering environmental awareness among students", "Managing resource constraints in teaching")
+        )
+
+    context = st.sidebar.selectbox("context"
+        "please select the context of the scenorio",
+        ("Division 1 (Grades K-3)", "Devision 2 (4-6)", "Middle School", "High School")
+    )
+    st.sidebar.write("Would you like to add a bit more to the context?")
+    on = st.sidebar.toggle("Yes", value=False)
+
+    if on: 
+        user_context = st.sidebar.text_area("Please provide context that you would like to be included in the case.")
+        prompt = f"""Generate a scenario for the category of {case_category} with a focus on {options} for the following context: {context}. Ensure that the scenario includes the following consideration: {user_context}.
+                    The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                    Ensure that there is no clear-cut answer for each scenario.
+"""
+    else:
+        prompt = f"""Generate a scenario for the category of {case_category} with a focus on {options} for the following context: {context}.
+                    The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                    Ensure that there is no clear-cut answer for each scenario.
+"""
+else:
+    def generate_response(prompt, setting):
+        client = OpenAI()
+
+        completion = client.chat.completions.create(
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": """
+                    **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
+
+                    1. Scenario Background
+                    Setting: Specify the professional environment (e.g., corporate, healthcare, technology, government). Include details about the organization type (e.g., small business, multinational corporation, public sector, non-profit).
+                    Characters: Introduce the main characters involved, including adult learners with specific professional backgrounds, job roles, experience levels, and personal traits. Include other relevant characters like colleagues, supervisors, clients, or industry stakeholders.
+                    Initial Conditions: Describe the initial conditions and circumstances leading up to the scenario, setting the stage for the narrative. This could include organizational changes, market shifts, technological advancements, or interpersonal dynamics at the workplace.
+                    
+                    2. Complexity and Realism
+
+                    Multiple Layers: Ensure the scenario has multiple layers of complexity, reflecting real-world professional situations and adult learning challenges.
+                    Diverse Perspectives: Include diverse perspectives and backgrounds, representing the variety of experiences in a professional environment in Canada.
+                    Realistic Challenges: Present challenges authentic to the professional context, pertinent to current industry trends, workplace dynamics, and adult learning principles.
+                    
+                    3. Ethical and Professional Considerations
+
+                    Moral Dilemmas: Introduce ethical or moral dilemmas relevant to the professional setting, ensuring no clear right or wrong answers, such as conflicts of interest, ethical use of data, or balancing company policy with personal values.
+                    Professional Standards: Align scenarios with professional standards, industry regulations, and organizational policies, reflecting realistic professional challenges.
+                    Cultural Sensitivity: Ensure scenarios are culturally sensitive and inclusive, respecting diverse professional and personal backgrounds.
+                    
+                    4. Decision Points
+
+                    Critical Choices: Provide key decision points in the scenario where the participant must choose a course of action in response to the situation.
+                    Consequences: Outline the potential consequences (both positive and negative) for each decision, taking into account the professional context.
+                    Reflective Questions: Include reflective questions at the end of the scenario to prompt deeper thinking about the choices made, their implications, and alternative strategies.
+                    Additional Guidelines for Diversity and Inclusion
+
+                    Ensure diversity in the representation of characters in terms of gender, ethnicity, age, and professional background.
+    """},
+                {"role": "user", "content": prompt}
+            ]
+        )
+
+        return completion.choices[0].message.content
+
+
+
+    case_category = st.sidebar.selectbox(
+        "To generate a case, please select for one of the following categories:",
+        ("Workplace Diversity and Inclusion", "Professional Development and Skills Upgrading", "Leadership and Management Challenges","Work-Life Balance and Mental Health", "Career Transition and Advancement", "Technological Adaptation and Digital Transformation","Organizational Change and Adaptation","Communication and Interpersonal Skills")
     )
 
-elif case_category == "Professional Dilemmas":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Professional Dilemmas",
-        ("Managing teacher-student boundaries", "Confidentiality scenarios","Responding to unethical behavior among colleagues")
-    )
+    if case_category == "Workplace Diversity and Inclusion":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Workplace Diversity and Inclusion",
+                ("Navigating cultural differences", "addressing language barriers", "fostering inclusive work environments","dealing with unconscious bias","promoting gender equality")
+            )
+    
+    if case_category == "Professional Development and Skills Upgrading":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Professional Development and Skills Upgrading",
+                ("Adapting to new technologies", "continuous learning in a changing industry", "balancing work and professional development","peer-to-peer learning")
+            )
+    
+    if case_category == "Leadership and Management Challenges":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Leadership and Management Challenges",
+                ("Managing remote teams", "leadership in times of change", "conflict resolution","mentorship and coaching","effective communication strategies")
+            )
+    
+    if case_category == "Work-Life Balance and Mental Health":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Leadership and Management Challenges",
+                ("Managing stress and burnout", "balancing work and personal life", "cmental health awareness in the workplace", "supporting colleagues with mental health issues","supporting colleagues with mental health issues")
+            )
+    
+    if case_category == "Career Transition and Advancement":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Workplace Career Transition and Advancement",
+                ("Navigating career changes", "overcoming barriers to career advancement", "developing new career skills")
+            )
 
-elif case_category == "Pedagogical Challenges":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Pedagogical Challenges",
-        ("Implementing new teaching methodologies", "Technology integration challenges", "Engaging disinterested students","curriculum delivery issues")
-    )
+    if case_category == "Technological Adaptation and Digital Transformation":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Technological Adaptation and Digital Transformation",
+                ("Adapting to new digital tools", "managing digital transformation in the workplace", "data privacy and ethics", "leveraging technology for innovation")
+            )
 
-elif case_category == "Parent and Community Engagement":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Parent and Community Engagement",
-        ("Handling parent-teacher meetings", "addressing parental concerns", "Involving the community in education","managing conflicts with parents")
-    )
+    if case_category == "Organizational Change and Adaptation":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Organizational Change and Adaptation",
+                ("Navigating organizational restructuring", "change management strategies", "managing resistance to change")
+            )
+    
+    if case_category == "Communication and Interpersonal Skills":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Communication and Interpersonal Skills",
+                ("Navigating organizational restructuring", "change management strategies", "managing resistance to change")
+            )
 
-elif case_category == "Student Well-being and Mental Health":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Student Well-being and Mental Health",
-        ("Recognizing and addressing student mental health issues", "Bullying and social conflicts", "Promoting student resilience","Supporting emotional well-being")
-    )
+    st.sidebar.write("Would you like to add a bit more to the context?")
+    on = st.sidebar.toggle("Yes", value=False)
 
-elif case_category == "Assessment and Evaluation":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Assessment and Evaluation",
-        ("Fair and effective grading practices", "providing constructive feedback", "dealing with academic dishonesty","assessing student learning progress")
-    )
-
-elif case_category == "Cultural and Linguistic Diversity":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Cultural and Linguistic Diversity",
-        ("Teaching in a multilingual classroom", "Respecting and incorporating cultural differences", "Overcoming language barriers","Celebrating diversity in the classroom")
-    )
-
-elif case_category == "Professional Development and Self-Reflection":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Professional Development and Self-Reflection",
-        ("Reflecting on personal teaching practice", "Pursuing continuous professional development", "Mentorship and collaboration challenges","Career progression scenarios")
-    )
-
-elif case_category == "Educational Policy and Administration":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Educational Policy and Administration",
-        ("Navigating educational policies", "School administration challenges", "Adapting to curriculum changes", "Dealing with bureaucratic constraints")
-    )
-
-elif case_category == "Sustainability and Environmental Education":
-    options = st.sidebar.selectbox(
-        "Select a subcategory for Educational Policy and Administration",
-        ("Integrating sustainability into the curriculum", "Fostering environmental awareness among students", "Managing resource constraints in teaching")
-    )
-
-
-context = st.sidebar.selectbox("context"
-    "please select the context of the scenorio",
-    ("Division 1 (Grades K-3)", "Devision 2 (4-6)", "Middle School", "High School")
-)
-
-#Prompt setting
-prompt = f"""Generate a scenorio for the category of {case_category} with a focus on {options} for the following context: {context}. 
-The generated scenario should be in a prose format. It should engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills. 
-                    Ensure the that their is not clear cut answer for each scenorio. 
+    if on: 
+        user_context = st.sidebar.text_area("Please provide additional information that you would like to add to the case.")
+        prompt = f"""Generate a scenario for the category of {case_category} with a focus on {options}. Ensure that the scenario includes the following consideration: {user_context}.
+                    The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in an adult professional learning setting. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                    Ensure that there is no clear-cut answer for each scenario. 
+"""
+    else:
+        prompt = f"""Generate a scenario for the category of {case_category} with a focus on {options}.
+                The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in an adult professional learning setting. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                Ensure that there is no clear-cut answer for each scenario.
 """
 
+
 if st.sidebar.button("Generate Case"):
-    scenorio = generate_response(prompt)
+    scenorio = generate_response(prompt,setting)
     st.write(scenorio)
     st.divider()
     ste.download_button("Download Case", scenorio, "case.txt")
@@ -154,7 +286,7 @@ st.sidebar.divider()
 st.sidebar.header("About")
 st.sidebar.markdown(
 """
-This application was created by [Soroush Sabbaghan](mailto:ssabbagh@ucalgary.ca) using [Streamlit](https://streamlit.io/) . It is powered by [OpenAI API](https://openai.com/api/)'s 
+This application was created by [Soroush Sabbaghan](mailto:ssabbagh@ucalgary.ca) and [Barb Brown](mailto:babrown@ucalgary.ca) using [Streamlit](https://streamlit.io/) . It is powered by [OpenAI API](https://openai.com/api/)'s 
 [GPT-4 API](https://platform.openai.com/docs/models/overview) for educational purposes. 
 """
 )
@@ -169,7 +301,7 @@ This work has the following license: [NonCommercial-NoDerivatives 4.0 Internatio
 st.sidebar.header("Version")
 st.sidebar.markdown(
 """
-November 24th, 2023 Version (1)
+December 1st, 2023 Version (3)
 """
 )
 
