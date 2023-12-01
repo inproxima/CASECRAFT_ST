@@ -76,7 +76,7 @@ if setting =="K-12":
         return completion.choices[0].message.content
 
     case_category = st.sidebar.selectbox(
-        "To generate a case, please select for one of the following categories:",
+        "To generate a case, please select from one of the following categories:",
         ("Classroom Management", "Inclusive Education", "Professional Dilemmas","Pedagogical Challenges","Parent and Community Engagement", "Student Well-being and Mental Health", "Assessment and Evaluation", "Cultural and Linguistic Diversity", "Professional Development and Self-Reflection","Educational Policy and Administration","Sustainability and Environmental Education")
     )
 
@@ -146,9 +146,9 @@ if setting =="K-12":
             ("Integrating sustainability into the curriculum", "Fostering environmental awareness among students", "Managing resource constraints in teaching")
         )
 
-    context = st.sidebar.selectbox("context"
-        "please select the context of the scenorio",
-        ("Division 1 (Grades K-3)", "Devision 2 (Grades 4-6)", "Middle School", "High School")
+    context = st.sidebar.selectbox(
+        "Context: Please select the context of the scenario:"
+        ("Division 1 (Grades K-3)", "Division 2 (Grades 4-6)", "Division 3 (Grades 7-8)", "Division 4 High School (Grades 9-12)")
     )
     st.sidebar.write("Would you like to add a bit more to the context?")
     on = st.sidebar.toggle("Yes", value=False)
@@ -211,56 +211,56 @@ else:
 
 
     case_category = st.sidebar.selectbox(
-        "To generate a case, please select for one of the following categories:",
+        "To generate a case, please select from one of the following categories:",
         ("Workplace Diversity and Inclusion", "Professional Development and Skills Upgrading", "Leadership and Management Challenges","Work-Life Balance and Mental Health", "Career Transition and Advancement", "Technological Adaptation and Digital Transformation","Organizational Change and Adaptation","Communication and Interpersonal Skills")
     )
 
     if case_category == "Workplace Diversity and Inclusion":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Workplace Diversity and Inclusion",
-                ("Navigating cultural differences", "addressing language barriers", "fostering inclusive work environments","dealing with unconscious bias","promoting gender equality")
+                ("navigating cultural differences", "addressing language barriers", "fostering inclusive work environments","dealing with unconscious bias","promoting gender equality")
             )
     
     if case_category == "Professional Development and Skills Upgrading":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Professional Development and Skills Upgrading",
-                ("Adapting to new technologies", "continuous learning in a changing industry", "balancing work and professional development","peer-to-peer learning")
+                ("adapting to new technologies", "continuous learning in a changing industry", "balancing work and professional development","peer-to-peer learning")
             )
     
     if case_category == "Leadership and Management Challenges":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Leadership and Management Challenges",
-                ("Managing remote teams", "leadership in times of change", "conflict resolution","mentorship and coaching","effective communication strategies")
+                ("managing remote teams", "leadership in times of change", "conflict resolution","mentorship and coaching","effective communication strategies")
             )
     
     if case_category == "Work-Life Balance and Mental Health":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Leadership and Management Challenges",
-                ("Managing stress and burnout", "balancing work and personal life", "cmental health awareness in the workplace", "supporting colleagues with mental health issues","supporting colleagues with mental health issues")
+                ("managing stress and burnout", "balancing work and personal life", "cmental health awareness in the workplace", "supporting colleagues with mental health issues", "supporting colleagues with mental health issues")
             )
     
     if case_category == "Career Transition and Advancement":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Workplace Career Transition and Advancement",
-                ("Navigating career changes", "overcoming barriers to career advancement", "developing new career skills")
+                ("navigating career changes", "overcoming barriers to career advancement", "developing new career skills")
             )
 
     if case_category == "Technological Adaptation and Digital Transformation":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Technological Adaptation and Digital Transformation",
-                ("Adapting to new digital tools", "managing digital transformation in the workplace", "data privacy and ethics", "leveraging technology for innovation")
+                ("adapting to new digital tools", "managing digital transformation in the workplace", "data privacy and ethics", "leveraging technology for innovation")
             )
 
     if case_category == "Organizational Change and Adaptation":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Organizational Change and Adaptation",
-                ("Navigating organizational restructuring", "change management strategies", "managing resistance to change")
+                ("navigating organizational restructuring", "change management strategies", "managing resistance to change")
             )
     
     if case_category == "Communication and Interpersonal Skills":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Communication and Interpersonal Skills",
-                ("Navigating organizational restructuring", "change management strategies", "managing resistance to change")
+                ("effective cross-cultural communication", " handling difficult conversations", "team collaboration skills", "virtual communication in remote work settings")
             )
 
     st.sidebar.write("Would you like to add a bit more to the context?")
