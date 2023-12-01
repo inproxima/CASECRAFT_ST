@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 
 #page setting
-st.set_page_config(page_title="ED Case Generative", page_icon="🤖", initial_sidebar_state="expanded", layout="wide")
+st.set_page_config(page_title="Case Generator", page_icon="🤖", initial_sidebar_state="expanded", layout="wide")
 
 hide_st_style = """
         <style>
@@ -29,7 +29,7 @@ api = OpenAI.api_key
 
 #Sidebar settings
 st.sidebar.header("Case Generator for Educational Contexts")
-setting = st.sidebar.radio("Please select the educational context",["K-12","Adult professional learning"])
+setting = st.sidebar.radio("Please select the educational context:",["K-12","Adult professional learning"])
 
 #choices
 st.sidebar.header("Choices")
