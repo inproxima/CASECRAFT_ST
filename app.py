@@ -28,8 +28,8 @@ api = OpenAI.api_key
 
 
 #Sidebar settings
-st.sidebar.subheader("Please select the educational context")
-setting = st.sidebar.radio("",["K-12","Adult professional learning"])
+st.sidebar.header("Case Generator for Educational Contexts")
+setting = st.sidebar.radio("Please select the educational context",["K-12","Adult professional learning"])
 
 #choices
 st.sidebar.header("Choices")
