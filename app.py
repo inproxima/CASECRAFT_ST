@@ -147,7 +147,7 @@ if setting =="K-12":
 
     context = st.sidebar.selectbox("context"
         "please select the context of the scenorio",
-        ("Division 1 (Grades K-3)", "Devision 2 (4-6)", "Middle School", "High School")
+        ("Division 1 (Grades K-3)", "Devision 2 (Grades 4-6)", "Middle School", "High School")
     )
     st.sidebar.write("Would you like to add a bit more to the context?")
     on = st.sidebar.toggle("Yes", value=False)
