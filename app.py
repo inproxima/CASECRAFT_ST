@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 
 #page setting
-st.set_page_config(page_title="Case Generator", page_icon="🤖", initial_sidebar_state="expanded", layout="wide")
+st.set_page_config(page_title="CaseCraft", page_icon="🤖", initial_sidebar_state="expanded", layout="wide")
 
 hide_st_style = """
         <style>
@@ -28,7 +28,8 @@ api = OpenAI.api_key
 
 
 #Sidebar settings
-st.sidebar.header("Case Generator for Educational Contexts")
+st.sidebar.header("CaseCraft")
+st.sidebar.write("Custom Adaptive Scenario Education Creation and Resource Adaptation Facility Tool")
 setting = st.sidebar.radio("Please select the educational context:",["K-12","Adult professional learning"])
 
 #choices
@@ -147,7 +148,7 @@ if setting =="K-12":
         )
 
     context = st.sidebar.selectbox(
-        "Context: Please select the context of the scenario:"
+        "Context: Please select the context of the scenario:",
         ("Division 1 (Grades K-3)", "Division 2 (Grades 4-6)", "Division 3 (Grades 7-8)", "Division 4 High School (Grades 9-12)")
     )
     st.sidebar.write("Would you like to add a bit more to the context?")
@@ -173,6 +174,8 @@ else:
             messages=[
                 {"role": "system", "content": """
                     **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
+                 
+                    **Title: Provide an appropriate title for the case scenario**
 
                     **1. Scenario Background**
                     - **Setting:** Specify the professional environment (e.g., corporate, healthcare, technology, government). Include details about the organization type (e.g., small business, multinational corporation, public sector, non-profit).
@@ -297,7 +300,7 @@ This application was created by [Soroush Sabbaghan](mailto:ssabbagh@ucalgary.ca)
 st.sidebar.header("Copyright")
 st.sidebar.markdown(
 """
-This work has the following license: [NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0)
+This work has the following license: [Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 """
 )
 
