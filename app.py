@@ -45,6 +45,8 @@ if setting =="K-12":
             messages=[
                 {"role": "system", "content": """
                     **Objective**: Generate a detailed educational case scenario for an Canadian {setting} setting. Ensure the following:
+                 
+                    **Provide an appropriate title for the case scenario**
 
                     **1. Scenario Background**
                     - **Setting**: Specify the grade level, subject area, and type of school (e.g., public, private, urban, rural).
@@ -84,67 +86,67 @@ if setting =="K-12":
     if case_category == "Classroom Management":
         options = st.sidebar.selectbox(
             "Select a subcategory for Classroom Management",
-            ("Classroom environment", "Implementing discipline strategies", "dealing with challenging behaviors")
+            ("classroom environment", "implementing discipline strategies", "dealing with challenging behaviors")
         )
 
     elif case_category == "Inclusive Education":
         options = st.sidebar.selectbox(
             "Select a subcategory for Inclusive Education",
-            ("Classroom environment", "Differentiating instruction for special needs students", "Accommodating diverse learners","Cultural inclusivity"," Language barriers", "Integrating students with disabilities")
+            ("classroom environment", "differentiating instruction for special needs students", "accommodating diverse learners","Cultural inclusivity"," language barriers", "integrating students with disabilities")
         )
 
     elif case_category == "Professional Dilemmas":
         options = st.sidebar.selectbox(
             "Select a subcategory for Professional Dilemmas",
-            ("Managing teacher-student boundaries", "Confidentiality scenarios","Responding to unethical behavior among colleagues")
+            ("managing teacher-student boundaries", "confidentiality scenarios","responding to unethical behavior among colleagues")
         )
 
     elif case_category == "Pedagogical Challenges":
         options = st.sidebar.selectbox(
             "Select a subcategory for Pedagogical Challenges",
-            ("Implementing new teaching methodologies", "Technology integration challenges", "Engaging disinterested students","curriculum delivery issues")
+            ("implementing new teaching methodologies", "technology integration challenges", "engaging disinterested students","curriculum delivery issues")
         )
 
     elif case_category == "Parent and Community Engagement":
         options = st.sidebar.selectbox(
             "Select a subcategory for Parent and Community Engagement",
-            ("Handling parent-teacher meetings", "addressing parental concerns", "Involving the community in education", "managing conflicts with parents")
+            ("handling parent-teacher meetings", "addressing parental concerns", "involving the community in education", "managing conflicts with parents")
         )
 
     elif case_category == "Student Well-being and Mental Health":
         options = st.sidebar.selectbox(
             "Select a subcategory for Student Well-being and Mental Health",
-            ("Recognizing and addressing student mental health issues", "Bullying and social conflicts", "Promoting student resilience", "Supporting emotional well-being")
+            ("recognizing and addressing student mental health issues", "bullying and social conflicts", "promoting student resilience", "supporting emotional well-being")
         )
 
     elif case_category == "Assessment and Evaluation":
         options = st.sidebar.selectbox(
             "Select a subcategory for Assessment and Evaluation",
-            ("Fair and effective grading practices", "providing constructive feedback", "dealing with academic dishonesty", "assessing student learning progress")
+            ("fair and effective grading practices", "providing constructive feedback", "dealing with academic dishonesty", "assessing student learning progress")
         )
 
     elif case_category == "Cultural and Linguistic Diversity":
         options = st.sidebar.selectbox(
             "Select a subcategory for Cultural and Linguistic Diversity",
-            ("Teaching in a multilingual classroom", "Respecting and incorporating cultural differences", "Overcoming language barriers", "Celebrating diversity in the classroom")
+            ("teaching in a multilingual classroom", "respecting and incorporating cultural differences", "overcoming language barriers", "celebrating diversity in the classroom")
         )
 
     elif case_category == "Professional Development and Self-Reflection":
         options = st.sidebar.selectbox(
             "Select a subcategory for Professional Development and Self-Reflection",
-            ("Reflecting on personal teaching practice", "Pursuing continuous professional development", "Mentorship and collaboration challenges", "Career progression scenarios")
+            ("reflecting on personal teaching practice", "pursuing continuous professional development", "mentorship and collaboration challenges", "career progression scenarios")
         )
 
     elif case_category == "Educational Policy and Administration":
         options = st.sidebar.selectbox(
             "Select a subcategory for Educational Policy and Administration",
-            ("Navigating educational policies", "School administration challenges", "Adapting to curriculum changes", "Dealing with bureaucratic constraints")
+            ("navigating educational policies", "school administration challenges", "adapting to curriculum changes", "dealing with bureaucratic constraints")
         )
 
     elif case_category == "Sustainability and Environmental Education":
         options = st.sidebar.selectbox(
             "Select a subcategory for Educational Policy and Administration",
-            ("Integrating sustainability into the curriculum", "Fostering environmental awareness among students", "Managing resource constraints in teaching")
+            ("integrating sustainability into the curriculum", "fostering environmental awareness among students", "managing resource constraints in teaching")
         )
 
     context = st.sidebar.selectbox(
@@ -175,7 +177,7 @@ else:
                 {"role": "system", "content": """
                     **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
                  
-                    **Title: Provide an appropriate title for the case scenario**
+                    **Provide an appropriate title for the case scenario**
 
                     **1. Scenario Background**
                     - **Setting:** Specify the professional environment (e.g., corporate, healthcare, technology, government). Include details about the organization type (e.g., small business, multinational corporation, public sector, non-profit).
