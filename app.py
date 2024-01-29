@@ -151,7 +151,7 @@ if setting =="K-12":
 
     context = st.sidebar.selectbox(
         "Context: Please select the context of the scenario:",
-        ("Division 1 (Grades K-3)", "Division 2 (Grades 4-6)", "Division 3 (Grades 7-8)", "Division 4 High School (Grades 9-12)")
+        ("Division 1 (Grades K-3)", "Division 2 (Grades 4-6)", "Division 3 (Grades 7-9)", "Division 4 High School (Grades 10-12)")
     )
     st.sidebar.write("Would you like to add a bit more to the context?")
     on = st.sidebar.toggle("Yes", value=False)
@@ -309,7 +309,7 @@ This work has the following license: [Attribution-NonCommercial-ShareAlike 4.0 I
 st.sidebar.header("Version")
 st.sidebar.markdown(
 """
-December 1st, 2023 Version (3)
+January 29th, 2024 Version (1)
 """
 )
 
