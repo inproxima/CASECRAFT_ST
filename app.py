@@ -41,7 +41,7 @@ if setting =="K-12":
         client = OpenAI()
 
         completion = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4-turbo",
             messages=[
                 {"role": "system", "content": """
                     **Objective**: Generate a detailed educational case scenario for an Canadian {setting} setting. Ensure the following:
@@ -172,7 +172,7 @@ else:
         client = OpenAI()
 
         completion = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4-turbo",
             messages=[
                 {"role": "system", "content": """
                     **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
@@ -295,7 +295,7 @@ st.sidebar.header("About")
 st.sidebar.markdown(
 """
 This application was created by [Soroush Sabbaghan](mailto:ssabbagh@ucalgary.ca) and [Barb Brown](mailto:babrown@ucalgary.ca) using [Streamlit](https://streamlit.io/) . It is powered by [OpenAI API](https://openai.com/api/)'s 
-[GPT-4 API](https://platform.openai.com/docs/models/overview) for educational purposes. 
+[GPT-4 Turbo API](https://platform.openai.com/docs/models/overview) for educational purposes. 
 """
 )
 
@@ -309,7 +309,7 @@ This work has the following license: [Attribution-NonCommercial-ShareAlike 4.0 I
 st.sidebar.header("Version")
 st.sidebar.markdown(
 """
-January 29th, 2024 Version (1)
+Version 2024.04.10 
 """
 )
 
