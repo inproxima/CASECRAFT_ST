@@ -241,7 +241,7 @@ else:
     if case_category == "Work-Life Balance and Mental Health":
             options = st.sidebar.selectbox(
                 "Select a subcategory for Leadership and Management Challenges",
-                ("managing stress and burnout", "balancing work and personal life", "cmental health awareness in the workplace", "supporting colleagues with mental health issues", "supporting colleagues with mental health issues")
+                ("managing stress and burnout", "balancing work and personal life", "mental health awareness in the workplace", "supporting colleagues with mental health issues", "supporting colleagues with mental health issues")
             )
     
     if case_category == "Career Transition and Advancement":
