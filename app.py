@@ -27,7 +27,7 @@ api = OpenAI.api_key
 
 
 
-#Sidebar settings
+#Sidebar 
 st.sidebar.header("CaseCraft")
 st.sidebar.write("Custom Adaptive Scenario Education Creation and Resource Adaptation Facility Tool")
 setting = st.sidebar.radio("Please select the educational context:",["K-12","Adult professional learning"])
@@ -41,9 +41,9 @@ if setting =="K-12":
         client = OpenAI()
 
         completion = client.chat.completions.create(
-            model="gpt-4-turbo",
+            model="gpt-4o-2024-08-06",
             messages=[
-                {"role": "system", "content": """
+                {"role": "system", "content": f"""
                     **Objective**: Generate a detailed educational case scenario for an Canadian {setting} setting. Ensure the following:
                  
                     **Provide an appropriate title for the case scenario**
@@ -172,9 +172,9 @@ else:
         client = OpenAI()
 
         completion = client.chat.completions.create(
-            model="gpt-4-turbo",
+            model="gpt-4o-2024-08-06",
             messages=[
-                {"role": "system", "content": """
+                {"role": "system", "content": f"""
                     **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
                  
                     **Provide an appropriate title for the case scenario**
