@@ -80,19 +80,19 @@ if setting =="K-12":
 
     case_category = st.sidebar.selectbox(
         "To generate a case, please select from one of the following categories:",
-        ("Classroom Management", "Inclusive Education", "Professional Dilemmas","Pedagogical Challenges","Parent and Community Engagement", "Student Well-being and Mental Health", "Assessment and Evaluation", "Cultural and Linguistic Diversity", "Professional Development and Self-Reflection","Educational Policy and Administration","Sustainability and Environmental Education")
+        ("Behavioral Guidance", "Inclusive Education", "Professional Dilemmas","Pedagogical Challenges","Parent and Community Engagement", "Student Well-being and Mental Health", "Assessment and Evaluation", "Cultural and Linguistic Diversity", "Professional Development and Self-Reflection","Educational Policy and Administration","Sustainability and Environmental Education")
     )
 
-    if case_category == "Classroom Management":
+    if case_category == "Behavioral Guidance":
         options = st.sidebar.selectbox(
-            "Select a subcategory for Classroom Management",
+            "Select a subcategory for Behavioral Guidance",
             ("classroom environment", "implementing discipline strategies", "dealing with challenging behaviors")
         )
 
     elif case_category == "Inclusive Education":
         options = st.sidebar.selectbox(
             "Select a subcategory for Inclusive Education",
-            ("classroom environment", "differentiating instruction for special needs students", "accommodating diverse learners","Cultural inclusivity"," language barriers", "integrating students with disabilities")
+            ("differentiating instruction for special needs students", "accommodating diverse learners","Cultural inclusivity"," language barriers", "integrating students with disabilities")
         )
 
     elif case_category == "Professional Dilemmas":
@@ -294,8 +294,7 @@ st.sidebar.divider()
 st.sidebar.header("About")
 st.sidebar.markdown(
 """
-This application was created by [Soroush Sabbaghan](mailto:ssabbagh@ucalgary.ca) and [Barb Brown](mailto:babrown@ucalgary.ca) using [Streamlit](https://streamlit.io/) . It is powered by [OpenAI API](https://openai.com/api/)'s 
-[GPT-4 Turbo API](https://platform.openai.com/docs/models/overview) for educational purposes. 
+This application was created by [Soroush Sabbaghan](mailto:ssabbagh@ucalgary.ca) and [Barb Brown](mailto:babrown@ucalgary.ca) using [Streamlit](https://streamlit.io/) . It is powered by [OpenAI](https://openai.com/api/) technology for educational purposes. 
 """
 )
 
