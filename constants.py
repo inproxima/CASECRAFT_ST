@@ -1,0 +1,1 @@
+APP_OPENAI_MODEL = "gpt-4o"

@@ -4,7 +4,8 @@ import streamlit as st
 import streamlit_ext as ste
 import os
 from dotenv import load_dotenv
-
+from service_shared import get_openai_client
+from constants import APP_OPENAI_MODEL
 
 #page setting
 st.set_page_config(page_title="CaseCraft", page_icon="🤖", initial_sidebar_state="expanded", layout="wide")
@@ -25,12 +26,10 @@ api = OpenAI.api_key
 
 #functions
 
-
-
 #Sidebar 
 st.sidebar.header("CaseCraft")
 st.sidebar.write("Custom Adaptive Scenario Education Creation and Resource Adaptation Facility Tool")
-setting = st.sidebar.radio("Please select the educational context:",["K-12","Adult professional learning"])
+setting = st.sidebar.radio("Please select the educational context:",["K-12","Higher Education", "Adult professional learning"])
 
 #choices
 st.sidebar.header("Choices")
@@ -38,10 +37,10 @@ st.sidebar.header("Choices")
 if setting =="K-12":
 
     def generate_response(prompt, setting):
-        client = OpenAI()
+        client = get_openai_client()
 
         completion = client.chat.completions.create(
-            model="gpt-4o-2024-08-06",
+            model=APP_OPENAI_MODEL,
             messages=[
                 {"role": "system", "content": f"""
                     **Objective**: Generate a detailed educational case scenario for an Canadian {setting} setting. Ensure the following:
@@ -167,12 +166,12 @@ if setting =="K-12":
                     The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
                     Ensure that there is no clear-cut answer for each scenario.
 """
-else:
+elif setting == "Adult professional learning":
     def generate_response(prompt, setting):
-        client = OpenAI()
+        client = get_openai_client()
 
         completion = client.chat.completions.create(
-            model="gpt-4o-2024-08-06",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": f"""
                     **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
@@ -212,7 +211,6 @@ else:
         )
 
         return completion.choices[0].message.content
-
 
 
     case_category = st.sidebar.selectbox(
@@ -283,6 +281,121 @@ else:
                 Ensure that there is no clear-cut answer for each scenario.
 """
 
+else:
+    def generate_response(prompt, setting):
+        client = get_openai_client()
+        setting = "Higher Education"
+        completion = client.chat.completions.create(
+            model=APP_OPENAI_MODEL,
+            messages=[
+                {
+                "role": "system",
+                "content": f"""
+                **Objective**: Generate a detailed educational case scenario for a Canadian {setting} setting. Ensure the following:
+
+                **Provide an appropriate title for the case scenario**
+
+                **1. Scenario Background**
+                - **Setting**: Specify the institution type (e.g., university, college), department, program level (undergraduate/graduate), and course context.
+                - **Characters**: Introduce the key stakeholders involved, including faculty members, students, teaching assistants, administrators, and relevant support staff.
+                - **Initial Conditions**: Describe the academic context, institutional policies, and circumstances leading to the scenario.
+
+                **2. Complexity and Realism**
+                - **Multiple Layers**: Include various academic, administrative, and interpersonal dimensions that reflect the complexity of higher education.
+                - **Diverse Perspectives**: Incorporate multiple viewpoints from different stakeholders within the academic community.
+                - **Contemporary Challenges**: Address current issues in higher education such as academic integrity, technology integration, accessibility, or remote learning.
+
+                **3. Ethical and Professional Considerations**
+                - **Academic Ethics**: Present situations involving academic integrity, research ethics, or professional conduct in higher education.
+                - **Institutional Policies**: Reference relevant institutional policies, academic regulations, and professional standards.
+                - **Equity and Inclusion**: Address aspects of equity, diversity, and inclusion in the post-secondary context.
+
+                **4. Decision Points**
+                - **Strategic Choices**: Present key decision points that require careful consideration of institutional policies, academic standards, and stakeholder interests.
+                - **Impact Analysis**: Outline potential implications for student learning, academic quality, institutional reputation, and stakeholder relationships.
+                - **Reflective Questions**: Include questions that promote critical analysis of higher education practices, policies, and pedagogical approaches.
+
+                Additional Guidelines for Higher Education Context:
+                - Include references to relevant academic policies and procedures
+                - Consider implications for academic freedom and institutional autonomy
+                - Address aspects of professional development and scholarly teaching
+                - Include considerations for diverse student populations and learning needs
+                - Reference relevant regulatory frameworks and accreditation standards
+                """,
+            },
+            {"role": "user", "content": prompt},
+        ],
+    )
+
+        return completion.choices[0].message.content
+    
+    case_category = st.sidebar.selectbox(
+        "To generate a case, please select from one of the following categories:",
+        ("Graduate Supervision and Mentoring", "Academic Integrity and Ethics", "Teaching and Learning Innovation", "Research and Scholarly Activities", "Academic Leadership and Administration", "Student Support and Success", "Equity, Diversity, and Inclusion in Academia", "Academic Program Development and Quality Assurance")
+    )
+
+    if case_category == "Graduate Supervision and Mentoring":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Graduate Supervision and Mentoring",
+                ("managing supervisor-student relationships", "supporting research progress", "addressing conflicts in supervision", "maintaining work-life boundaries", "supporting international graduate students")
+            )
+    
+    if case_category == "Academic Integrity and Ethics":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Academic Integrity and Ethics",
+                ("plagiarism and academic misconduct", "research ethics compliance", "intellectual property rights", "collaborative research ethics", "digital ethics in academia")
+            )
+    
+    if case_category == "Teaching and Learning Innovation":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Teaching and Learning Innovation",
+                ("blended learning implementation", "assessment design and academic integrity", "inclusive teaching practices", "technology integration in teaching", "experiential learning approaches")
+            )
+    
+    if case_category == "Research and Scholarly Activities":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Research and Scholarly Activities",
+                ("research funding and grant management", "research collaboration challenges", "publishing and academic impact", "balancing teaching and research", "community-engaged research")
+            )
+    
+    if case_category == "Academic Leadership and Administration":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Academic Leadership and Administration",
+                ("departmental leadership challenges", "faculty recruitment and retention", "managing academic programs", "budget and resource allocation", "strategic planning implementation")
+            )
+
+    if case_category == "Student Support and Success":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Student Support and Success",
+                ("mental health and wellbeing", "academic accommodations", "supporting diverse learners", "career development support", "international student integration")
+            )
+
+    if case_category == "Equity, Diversity, and Inclusion in Academia":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Equity, Diversity, and Inclusion in Academia",
+                ("inclusive curriculum design", "addressing systemic barriers", "promoting diverse representation", "cultural competency development", "accessibility in higher education")
+            )
+    
+    if case_category == "Academic Program Development and Quality Assurance":
+            options = st.sidebar.selectbox(
+                "Select a subcategory for Academic Program Development and Quality Assurance",
+                ("curriculum review and renewal", "accreditation processes", "program assessment methods", "stakeholder engagement", "market alignment and relevance")
+            )
+
+    st.sidebar.write("Would you like to add a bit more to the context?")
+    on = st.sidebar.toggle("Yes", value=False)
+
+    if on: 
+        user_context = st.sidebar.text_area("Please provide additional information that you would like to add to the case.")
+        prompt = f"""Generate a scenario for the category of {case_category} with a focus on {options}. Ensure that the scenario includes the following consideration: {user_context}.
+                    The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in an adult professional learning setting. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                    Ensure that there is no clear-cut answer for each scenario. 
+"""
+    else:
+        prompt = f"""Generate a scenario for the category of {case_category} with a focus on {options}.
+                The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in an adult professional learning setting. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                Ensure that there is no clear-cut answer for each scenario.
+"""
 
 if st.sidebar.button("Generate Case"):
     scenorio = generate_response(prompt,setting)
@@ -308,7 +421,7 @@ This work has the following license: [Attribution-NonCommercial-ShareAlike 4.0 I
 st.sidebar.header("Version")
 st.sidebar.markdown(
 """
-Version 2024.04.10 
+Version 2024.12.10 
 """
 )
 
