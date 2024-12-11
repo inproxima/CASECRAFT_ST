@@ -331,7 +331,7 @@ else:
     
     case_category = st.sidebar.selectbox(
         "To generate a case, please select from one of the following categories:",
-        ("Graduate Supervision and Mentoring", "Academic Integrity and Ethics", "Teaching and Learning Innovation", "Research and Scholarly Activities", "Academic Leadership and Administration", "Student Support and Success", "Equity, Diversity, and Inclusion in Academia", "Academic Program Development and Quality Assurance")
+        ("Graduate Supervision and Mentoring", "Academic Integrity and Ethics", "Teaching and Learning Innovation", "Research and Scholarly Activities", "Academic Leadership and Administration", "Student Support and Success", "Equity, Diversity, and Inclusion in Academia", "Academic Program Development and Quality Assurance", "Undergraduate Teacher Practicum")
     )
 
     if case_category == "Graduate Supervision and Mentoring":
@@ -380,6 +380,12 @@ else:
             options = st.sidebar.selectbox(
                 "Select a subcategory for Academic Program Development and Quality Assurance",
                 ("curriculum review and renewal", "accreditation processes", "program assessment methods", "stakeholder engagement", "market alignment and relevance")
+            )
+
+    if case_category == "Undergraduate Teacher Practicum":
+            options = st.sidebar.selectbox(
+            "Select a subcategory for Undergraduate Teacher Practicum",
+            ("partner-teacher relationship dynamics", "professional boundaries and relationships", "classroom management during practicum", "balancing university coursework and practicum responsibilities", "navigating feedback and evaluation processes")
             )
 
     st.sidebar.write("Would you like to add a bit more to the context?")
