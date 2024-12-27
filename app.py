@@ -17,14 +17,9 @@ hide_st_style = """
             header {visibility: hidden;}
         </style>
 """
-#st.markdown(hide_st_style, unsafe_allow_html=True)
 
-#OpenAI APA Key
-load_dotenv()
-OpenAI.api_key = os.getenv("OPENAI_API_KEY") 
-api = OpenAI.api_key
 
-#functions
+
 
 #Sidebar 
 st.sidebar.header("CaseCraft")
@@ -52,22 +47,18 @@ if setting =="K-12":
                     - **Characters**: Introduce the main characters involved, including students with specific traits (e.g., learning styles, behavioral characteristics), fellow teachers, and possibly parents or guardians.
                     - **Initial Conditions**: Describe the initial conditions and circumstances leading up to the scenario, setting the stage for the narrative.
 
-                    **2. Complexity and Realism**
-                    - **Multiple Layers**: Ensure the scenario has multiple layers of complexity, accurately reflecting real-world classroom situations.
-                    - **Diverse Perspectives**: Incorporate diverse perspectives and backgrounds to represent a broad spectrum of classroom experiences.
-                    - **Realistic Challenges**: Present challenges that are authentic, relevant, and pertinent to the current educational context of the scenario.
+                    **2. Scenario**
+                    Create a scenario that is engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                    Ensure the scenario has multiple layers of complexity, accurately reflecting real-world classroom situations. Incorporate diverse perspectives and backgrounds to represent a broad spectrum of classroom experiences. Present challenges that are authentic, relevant, and pertinent to the current educational context of the scenario.
+                    Introduce ethical or moral dilemmas relevant to the scenario, ensuring there are no clear right or wrong answers. Craft the scenario to be culturally sensitive and inclusive, respecting diverse backgrounds and viewpoints.
 
-                    **3. Ethical and Professional Considerations**
-                    - **Moral Dilemmas**: Introduce ethical or moral dilemmas relevant to the scenario, ensuring there are no clear right or wrong answers.
-                    - **Professional Standards**: Align the scenario with professional teaching standards and educational policies, ensuring it reflects realistic professional challenges.
-                    - **Cultural Sensitivity**: Craft the scenario to be culturally sensitive and inclusive, respecting diverse backgrounds and viewpoints.
-
-                    **4. Decision Points**
-                    - Critical Choices: Provide key decision points in the scenario where the participant must choose a course of action in response to the situation.
-                    - Consequences: Outline the potential consequences (both positive and negative) for each decision, taking into account the professional context.
-                    - Reflective Questions: Include reflective questions at the end of the scenario to prompt deeper thinking about the choices made, their implications, and alternative strategies.
+                    **3. Decision Points**
+                    - **Teaching Quality Standards**: Ask which teaching quality standards are being met or not met in the scenario. Ask what the teacher could have done differently to meet the standards.
+                    - **Reflective Questions**: Include reflective questions at the end of the scenario to prompt deeper thinking about the choices made, their implications, and alternative strategies.
+                    - **AI Evaluation**: Ask what the AI has missed in the development of the scenario in terms of key components such as voice, values, and pedagogical approaches.
                     
                     Additional Guidelines for Diversity and Inclusion
+                    Do not mention or use learning styles. 
 
                     Ensure diversity in the representation of characters in terms of gender, ethnicity, age, and professional background.
     """},
@@ -79,7 +70,20 @@ if setting =="K-12":
 
     case_category = st.sidebar.selectbox(
         "To generate a case, please select from one of the following categories:",
-        ("Behavioral Guidance", "Inclusive Education", "Professional Dilemmas","Pedagogical Challenges","Parent and Community Engagement", "Student Well-being and Mental Health", "Assessment and Evaluation", "Cultural and Linguistic Diversity", "Professional Development and Self-Reflection","Educational Policy and Administration","Sustainability and Environmental Education")
+        (
+            "Behavioral Guidance",
+            "Inclusive Education",
+            "Professional Dilemmas",
+            "Pedagogical Challenges",
+            "Parent and Community Engagement",
+            "Student Well-being and Mental Health",
+            "Assessment and Evaluation",
+            "Cultural and Linguistic Diversity",
+            "Professional Development and Self-Reflection",
+            "Educational Policy and Administration",
+            "Sustainability and Environmental Education",
+            "Complex Classrooms"
+        )
     )
 
     if case_category == "Behavioral Guidance":
@@ -148,6 +152,18 @@ if setting =="K-12":
             ("integrating sustainability into the curriculum", "fostering environmental awareness among students", "managing resource constraints in teaching")
         )
 
+    elif case_category == "Complex Classrooms":
+        # Add subcategories for complex classrooms
+        options = st.sidebar.selectbox(
+            "Select a subcategory for Complex Classrooms",
+            (
+                "multi-grade classrooms",
+                "mixed-ability grouping",
+                "large class sizes",
+                "limited resources"
+            )
+        )
+
     context = st.sidebar.selectbox(
         "Context: Please select the context of the scenario:",
         ("Division 1 (Grades K-3)", "Division 2 (Grades 4-6)", "Division 3 (Grades 7-9)", "Division 4 High School (Grades 10-12)")
@@ -159,6 +175,7 @@ if setting =="K-12":
         user_context = st.sidebar.text_area("Please provide context that you would like to be included in the case.")
         prompt = f"""Generate a scenario for the category of {case_category} with a focus on {options} for the following context: {context}. Ensure that the scenario includes the following consideration: {user_context}.
                     The generated scenario should be in a prose format. It should be engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                    
                     Ensure that there is no clear-cut answer for each scenario.
 """
     else:
@@ -183,27 +200,22 @@ elif setting == "Adult professional learning":
                     - **Characters:** Introduce the main characters involved, including adult learners with specific professional backgrounds, job roles, experience levels, and personal traits. Include other relevant characters like colleagues, supervisors, clients, or industry stakeholders.
                     - **Initial Conditions:** Describe the initial conditions and circumstances leading up to the scenario, setting the stage for the narrative. This could include organizational changes, market shifts, technological advancements, or interpersonal dynamics at the workplace.
                     
-                    **2. Complexity and Realism**
-
-                    - **Multiple Layers:** Ensure the scenario has multiple layers of complexity, reflecting real-world professional situations and adult learning challenges.
-                    - **Diverse Perspectives:** Include diverse perspectives and backgrounds, representing the variety of experiences in a professional environment in Canada.
-                    - **Realistic Challenges:** Present challenges authentic to the professional context, pertinent to current industry trends, workplace dynamics, and adult learning principles.
+                    **2. Scenario**
+                    Create a scenario that is engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                    Ensure the scenario has multiple layers of complexity, accurately reflecting real-world classroom situations. Incorporate diverse perspectives and backgrounds to represent a broad spectrum of classroom experiences. Present challenges that are authentic, relevant, and pertinent to the current educational context of the scenario.
+                    Introduce ethical or moral dilemmas relevant to the scenario, ensuring there are no clear right or wrong answers. Craft the scenario to be culturally sensitive and inclusive, respecting diverse backgrounds and viewpoints.
+                    Introduce ethical or moral dilemmas relevant to the professional setting, ensuring no clear right or wrong answers, such as conflicts of interest, ethical use of data, or balancing company policy with personal values.
+                    Align scenarios with professional standards, industry regulations, and organizational policies, reflecting realistic professional challenges.
+                    Ensure scenarios are culturally sensitive and inclusive, respecting diverse professional and personal backgrounds.
                     
-                    **3. Ethical and Professional Considerations**
-
-                    - **Moral Dilemmas:** Introduce ethical or moral dilemmas relevant to the professional setting, ensuring no clear right or wrong answers, such as conflicts of interest, ethical use of data, or balancing company policy with personal values.
-                    - **Professional Standards:** Align scenarios with professional standards, industry regulations, and organizational policies, reflecting realistic professional challenges.
-                    - **Cultural Sensitivity:** Ensure scenarios are culturally sensitive and inclusive, respecting diverse professional and personal backgrounds.
-                    
-                    **4. Decision Points**
-
+                    **3. Decision Points**
                     - **Critical Choices:** Provide key decision points in the scenario where the participant must choose a course of action in response to the situation.
                     - **Consequences:** Outline the potential consequences (both positive and negative) for each decision, taking into account the professional context.
                     - **Reflective Questions:** Include reflective questions at the end of the scenario to prompt deeper thinking about the choices made, their implications, and alternative strategies.
                     
                  
                     Additional Guidelines for Diversity and Inclusion
-
+                    Do not mention or use learning styles. 
                     Ensure diversity in the representation of characters in terms of gender, ethnicity, age, and professional background.
     """},
                 {"role": "user", "content": prompt}
@@ -300,17 +312,15 @@ else:
                 - **Characters**: Introduce the key stakeholders involved, including faculty members, students, teaching assistants, administrators, and relevant support staff.
                 - **Initial Conditions**: Describe the academic context, institutional policies, and circumstances leading to the scenario.
 
-                **2. Complexity and Realism**
-                - **Multiple Layers**: Include various academic, administrative, and interpersonal dimensions that reflect the complexity of higher education.
-                - **Diverse Perspectives**: Incorporate multiple viewpoints from different stakeholders within the academic community.
-                - **Contemporary Challenges**: Address current issues in higher education such as academic integrity, technology integration, accessibility, or remote learning.
+                **2. Scenario**
+                Create a scenario that is engaging, thought-provoking, and useful for training purposes in a teacher education program. It should stimulate critical thinking, problem-solving, and ethical reasoning skills.
+                Ensure the scenario has multiple layers of complexity, accurately reflecting real-world classroom situations. Incorporate diverse perspectives and backgrounds to represent a broad spectrum of classroom experiences. Present challenges that are authentic, relevant, and pertinent to the current educational context of the scenario.
+                Introduce ethical or moral dilemmas relevant to the scenario, ensuring there are no clear right or wrong answers. Craft the scenario to be culturally sensitive and inclusive, respecting diverse backgrounds and viewpoints.
+                Introduce ethical or moral dilemmas relevant to the professional setting, ensuring no clear right or wrong answers, such as conflicts of interest, ethical use of data, or balancing company policy with personal values.
+                Align scenarios with professional standards, industry regulations, and organizational policies, reflecting realistic professional challenges.
+                Ensure scenarios are culturally sensitive and inclusive, respecting diverse professional and personal backgrounds.
 
-                **3. Ethical and Professional Considerations**
-                - **Academic Ethics**: Present situations involving academic integrity, research ethics, or professional conduct in higher education.
-                - **Institutional Policies**: Reference relevant institutional policies, academic regulations, and professional standards.
-                - **Equity and Inclusion**: Address aspects of equity, diversity, and inclusion in the post-secondary context.
-
-                **4. Decision Points**
+                **3. Decision Points**
                 - **Strategic Choices**: Present key decision points that require careful consideration of institutional policies, academic standards, and stakeholder interests.
                 - **Impact Analysis**: Outline potential implications for student learning, academic quality, institutional reputation, and stakeholder relationships.
                 - **Reflective Questions**: Include questions that promote critical analysis of higher education practices, policies, and pedagogical approaches.
