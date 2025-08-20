@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: casecraft
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "python server.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: NODE_VERSION
+        value: 18.18.0
+      - key: OPENAI_API_KEY
+        sync: false
+    plan: free
