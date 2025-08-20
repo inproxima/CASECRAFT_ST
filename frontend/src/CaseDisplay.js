@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import DownloadIcon from '@mui/icons-material/Download';
+import { marked } from 'marked';
+import HTMLtoDOCX from 'html-docx-js/dist/html-docx';
 import ReactMarkdown from 'react-markdown';
 
 const CaseDisplay = ({ caseData }) => {
@@ -12,16 +15,37 @@ const CaseDisplay = ({ caseData }) => {
     <div>
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Generated Case Study</h2>
-        <Button
-          variant="outlined"
-          startIcon={<ContentCopyIcon />}
-          onClick={() => {
-            navigator.clipboard.writeText(caseData);
-          }}
-          sx={{ textTransform: 'none' }}
-        >
-          Copy to Clipboard
-        </Button>
+        <Stack direction="row" spacing={1}>
+          <Button
+            variant="outlined"
+            startIcon={<ContentCopyIcon />}
+            onClick={() => {
+              navigator.clipboard.writeText(caseData);
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            Copy
+          </Button>
+          <Button
+            variant="contained"
+            startIcon={<DownloadIcon />}
+            onClick={() => {
+              const html = marked.parse(caseData || '');
+              const blob = HTMLtoDOCX.asBlob(`<!doctype html><html><head><meta charset="utf-8" /></head><body>${html}</body></html>`);
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'casecraft-case.docx';
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+              URL.revokeObjectURL(url);
+            }}
+            sx={{ textTransform: 'none' }}
+          >
+            Download DOCX
+          </Button>
+        </Stack>
       </div>
       <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
         <div className="p-8">
