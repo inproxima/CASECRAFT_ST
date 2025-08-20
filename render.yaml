@@ -3,7 +3,7 @@ services:
     name: casecraft
     env: python
     buildCommand: "./build.sh"
-    startCommand: "python server.py"
+    startCommand: "gunicorn -w 2 -k gthread --threads 8 --timeout 120 -b 0.0.0.0:$PORT server:app"
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
