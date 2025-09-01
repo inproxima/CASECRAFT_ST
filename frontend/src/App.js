@@ -19,10 +19,10 @@ function App() {
     setError(null);
     try {
       const data = await generateCase(formData);
-      console.log('Received data:', data); // Added for debugging
+
       setCaseData(data);
     } catch (err) {
-      console.error('Error in handleGenerate:', err); // Added for debugging
+      console.error('Error in handleGenerate:', err);
       setError('Failed to generate case. Please try again.');
     } finally {
       setLoading(false);
