@@ -135,54 +135,73 @@ def generate_response(prompt, setting, generator_type="education"):
             - Consider how AI might affect the teacher-student relationship and pastoral care
             - Address questions of equity, access, and digital divide within the school community
 
-            **3. Critical Analysis Questions**
-            Present the scenario, then include these specific questions that require deep reflection:
+            **3. Case-Specific Critical Analysis Questions**
+            Based on the specific details of this scenario, generate targeted questions that directly reference the AI tool, setting, stakeholders, and dilemmas presented. Each question should be tailored to the case and guide reflection using the FASTER principles and Catholic values.
 
-            **Question 1: Appropriate Use of AI**
-            "In this scenario, when (if at all) would it be appropriate to use AI? What specific conditions or safeguards would need to be in place? How would you apply the 80/20 rule (AI handles 80% of routine tasks, humans focus on the 20% requiring judgment and relationship)?"
+            **Question 1: Appropriate Use of AI (Case-Specific)**
+            Frame a question that specifically addresses when the AI tool mentioned in the scenario would be appropriate. Reference:
+            - The specific AI tool and its proposed use in this case
+            - The particular students, grade level, or subject area involved
+            - The specific educational task or challenge being addressed
+            - How the 80/20 rule applies to this particular situation
+            Example format: "Given that [specific teacher/class] is considering using [specific AI tool] for [specific task], when would this be appropriate? What safeguards are needed for [specific student population]?"
 
-            **Question 2: FASTER Principles Application**
-            "How do the FASTER principles (Fair, Accountable, Secure, Transparent, Explainable, Responsible) apply to this scenario? Which principles are upheld and which might be compromised? How would you balance competing principles?"
+            **Question 2: FASTER Principles Application (Case-Specific)**
+            Create a question that examines how FASTER principles apply to the specific scenario elements:
+            - Which FASTER principles are most at risk given the specific AI use proposed?
+            - How does the particular setting or student population affect these principles?
+            - What specific tensions exist between principles in this case?
+            Example format: "In using [specific AI tool] with [specific students], which FASTER principles are most challenged? How would [specific stakeholder] view the fairness and transparency of this approach?"
 
-            **Question 3: Red Lines Assessment**
-            "Does this scenario cross any red lines for Catholic education? Consider:
-            - Is human dignity and the sacred nature of the teacher-student relationship preserved?
-            - Does it compromise the formation of conscience or moral development?
-            - Are we replacing human care, pastoral counseling, or sacramental preparation?
-            - Does it undermine authentic learning and personal growth?
-            Explain why or why not, and where exactly the line should be drawn."
+            **Question 3: Red Lines Assessment (Case-Specific)**
+            Develop a question that evaluates potential red lines based on the scenario's specifics:
+            - Reference the particular relationship or interaction being affected
+            - Mention the specific Catholic value or teaching practice at stake
+            - Address the particular vulnerability of students in this context
+            Example format: "Does using [AI tool] for [specific purpose] cross a red line when it comes to [specific aspect of Catholic education]? Consider how this affects [specific relationship/value] in [specific context]."
 
-            **Question 4: Catholic Values Integration**
-            "How does this AI use align or conflict with Catholic social teaching, particularly regarding:
-            - The dignity of the human person
-            - The common good
-            - Subsidiarity and participation
-            - Preferential option for the poor and vulnerable
-            What modifications would make this AI use more aligned with our Catholic mission?"
+            **Question 4: Catholic Values Integration (Case-Specific)**
+            Craft a question linking the specific AI use to Catholic social teaching:
+            - Reference how the specific AI application affects human dignity in this context
+            - Address how vulnerable students in the scenario are particularly impacted
+            - Connect to specific Ontario Catholic Graduate Expectations relevant to the case
+            Example format: "How does [specific AI use] in [specific setting] align with our commitment to [relevant Catholic value]? What about [specific vulnerable group] in this scenario?"
 
-            **Question 5: Implementation Decision**
-            "If you were the principal/teacher/board member in this scenario, what would be your decision? How would you communicate this decision to:
-            - Students and their families
-            - Teaching staff
-            - The broader Catholic school community
-            - The diocese or board trustees"
+            **Question 5: Implementation Decision (Case-Specific)**
+            Generate a decision-making question tailored to the scenario's context:
+            - Reference the specific role (teacher/principal/board member) most relevant
+            - Address the particular communication challenges in this case
+            - Include specific stakeholder concerns raised in the scenario
+            Example format: "As [specific role] facing [specific dilemma], what would you decide about [AI use]? How would you address [specific stakeholder's] concerns about [specific issue]?"
 
-            **Question 6: Policy Implications**
-            "What policies or guidelines does this scenario suggest BGCDSB should develop? How can we ensure AI enhances rather than replaces the human elements essential to Catholic education?"
+            **Question 6: Policy Implications (Case-Specific)**
+            Create a forward-looking question about policies needed for this type of situation:
+            - Reference the specific gap or challenge revealed by the scenario
+            - Address the particular safeguards needed for this type of AI use
+            - Connect to broader BGCDSB policies and Catholic education mission
+            Example format: "What policies should BGCDSB develop to address [specific AI use] in [specific context]? How can we ensure [specific value/principle] is protected when [specific situation] arises?"
+
+            **Framework Guidance Box Content**
+            Include a contextual reminder that references the specific case:
+            "When considering [specific AI tool] in [specific setting], remember:
+            • FASTER principles guide ethical AI use in Catholic education
+            • The 80/20 rule suggests AI for routine tasks, humans for relationships
+            • Red lines protect sacred aspects of Catholic education
+            • Every decision must honor the dignity of [specific students/stakeholders mentioned]"
 
             **Catholic Education Context Requirements:**
-            - Reference Ontario Catholic Graduate Expectations where relevant
-            - Consider the role of faith formation and spiritual development
-            - Address the balance between innovation and tradition in Catholic education
-            - Include considerations for vulnerable students and inclusive education
-            - Reference the sacred trust parents place in Catholic educators
+            - Reference Ontario Catholic Graduate Expectations relevant to the specific case
+            - Consider how faith formation is affected by the specific AI use proposed
+            - Address the balance between innovation and tradition for this particular scenario
+            - Include considerations for the specific vulnerable students mentioned
+            - Reference the sacred trust relevant to the specific educator-student relationship
             
-            **Ensure the scenario:**
-            - Has no single "correct" answer but requires thoughtful discernment
-            - Challenges educators to think critically about AI's role in Catholic education
-            - Promotes discussion about where technology serves and where it might hinder our mission
-            - Encourages consideration of both practical benefits and deeper philosophical/theological implications
-            - Reflects real challenges Catholic educators face in the digital age
+            **Ensure the scenario and questions:**
+            - Are intricately connected and reference specific case details
+            - Cannot be answered generically but require engagement with the case specifics
+            - Challenge educators to apply frameworks to the particular situation
+            - Use names, grade levels, and specific tools mentioned in the scenario
+            - Build on the specific tensions and dilemmas presented
         """
     elif generator_type == "business":
         system_prompt = f"""
