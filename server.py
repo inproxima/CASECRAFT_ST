@@ -14,6 +14,8 @@ def generate_response(prompt, setting, generator_type="education"):
 
     if generator_type == "social-work":
         system_prompt = f"""
+            Formatting re-enabled — please use Markdown **bold**, _italics_, and header tags to **improve the readability** of your responses.
+            
             **Objective**: Generate a detailed social work case scenario for Canadian practice. Ensure the following:
          
             **Provide an appropriate title for the case scenario**
@@ -54,6 +56,8 @@ def generate_response(prompt, setting, generator_type="education"):
         """
     elif generator_type == "nursing":
         system_prompt = f"""
+            Formatting re-enabled — please use Markdown **bold**, _italics_, and header tags to **improve the readability** of your responses.
+            
             **Objective**: Generate a challenging nursing case scenario for Canadian healthcare practice that requires students to solve complex problems with no clear-cut answers. The case should assess students' ability to deal with real-world clinical contexts.
          
             **Provide an appropriate title for the case scenario**
@@ -116,6 +120,8 @@ def generate_response(prompt, setting, generator_type="education"):
         """
     elif generator_type == "bgcdsb":
         system_prompt = f"""
+            Formatting re-enabled — please use Markdown **bold**, _italics_, and header tags to **improve the readability** of your responses.
+            
             **Objective**: Generate a challenging AI integration scenario for the Bruce-Grey Catholic District School Board that requires educators to grapple with when and how to appropriately use AI in Catholic education. The case should have no clear-cut answer and require careful consideration of Catholic values, the FASTER principles, and potential red lines.
          
             **Provide an appropriate title for the case scenario**
@@ -205,6 +211,8 @@ def generate_response(prompt, setting, generator_type="education"):
         """
     elif generator_type == "business":
         system_prompt = f"""
+            Formatting re-enabled — please use Markdown **bold**, _italics_, and header tags to **improve the readability** of your responses.
+            
             **Objective**: Generate a challenging business case scenario for Canadian business practice that requires students to solve complex problems with no clear-cut answers. The case should assess students' ability to deal with real-world business contexts and competing stakeholder interests.
          
             **Provide an appropriate title for the case scenario**
@@ -267,6 +275,8 @@ def generate_response(prompt, setting, generator_type="education"):
         """
     elif setting == "K-12":
         system_prompt = f"""
+            Formatting re-enabled — please use Markdown **bold**, _italics_, and header tags to **improve the readability** of your responses.
+            
             **Objective**: Generate a detailed educational case scenario for an Canadian {setting} setting. Ensure the following:
          
             **Provide an appropriate title for the case scenario**
@@ -293,6 +303,8 @@ def generate_response(prompt, setting, generator_type="education"):
         """
     elif setting == "Adult professional learning":
         system_prompt = f"""
+            Formatting re-enabled — please use Markdown **bold**, _italics_, and header tags to **improve the readability** of your responses.
+            
             **Objective**: Generate a detailed case scenario for an Canadian {setting} setting. Ensure the following:
          
             **Provide an appropriate title for the case scenario**
@@ -349,7 +361,7 @@ def generate_response(prompt, setting, generator_type="education"):
         - Consider implications for academic freedom and institutional autonomy
         - Address aspects of professional development and scholarly teaching
         - Include considerations for diverse student populations and learning needs
-                - Reference relevant regulatory frameworks and accreditation standards
+        - Reference relevant regulatory frameworks and accreditation standards
         """
 
     completion = client.chat.completions.create(
