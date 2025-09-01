@@ -123,16 +123,18 @@ def generate_response(prompt, setting, generator_type="education"):
             Formatting re-enabled — please use Markdown **bold**, _italics_, and header tags to **improve the readability** of your responses.
             
             **Objective**: Generate a challenging AI integration scenario for the Bruce-Grey Catholic District School Board that requires educators to grapple with when and how to appropriately use AI in Catholic education. The case should have no clear-cut answer and require careful consideration of Catholic values, the FASTER principles, and potential red lines.
+            
+            **CRITICAL REQUIREMENT: The ENTIRE output must be LIMITED TO 1000 WORDS TOTAL. Be concise while maintaining depth and case-specificity.**
          
             **Provide an appropriate title for the case scenario**
 
-            **1. Scenario Context**
+            **1. Scenario Context** _(200-250 words max)_
             - **Setting**: Describe the specific Catholic school environment, grade level, and stakeholders involved.
             - **AI Tool/Technology**: Identify the specific AI tool or technology being considered (e.g., ChatGPT, Grammarly, AI tutoring systems, etc.).
             - **Current Situation**: Present the educational need or opportunity that prompted consideration of AI use.
             - **Stakeholder Perspectives**: Include varying viewpoints from teachers, students, parents, administrators, and the faith community.
 
-            **2. The AI Dilemma**
+            **2. The AI Dilemma** _(200-250 words max)_
             Create a nuanced scenario where the use of AI presents both significant benefits and serious concerns:
             - Present compelling reasons why AI could enhance educational outcomes or efficiency
             - Include legitimate concerns about human dignity, authentic learning, or Catholic values
@@ -141,8 +143,8 @@ def generate_response(prompt, setting, generator_type="education"):
             - Consider how AI might affect the teacher-student relationship and pastoral care
             - Address questions of equity, access, and digital divide within the school community
 
-            **3. Case-Specific Critical Analysis Questions**
-            Based on the specific details of this scenario, generate targeted questions that directly reference the AI tool, setting, stakeholders, and dilemmas presented. Each question should be tailored to the case and guide reflection using the FASTER principles and Catholic values.
+            **3. Case-Specific Critical Analysis Questions** _(400-450 words total - approximately 70 words per question)_
+            Based on the specific details of this scenario, generate 6 concise, targeted questions that directly reference the AI tool, setting, stakeholders, and dilemmas presented. Each question should be tailored to the case and guide reflection using the FASTER principles and Catholic values.
 
             **Question 1: Appropriate Use of AI (Case-Specific)**
             Frame a question that specifically addresses when the AI tool mentioned in the scenario would be appropriate. Reference:
@@ -187,8 +189,8 @@ def generate_response(prompt, setting, generator_type="education"):
             - Connect to broader BGCDSB policies and Catholic education mission
             Example format: "What policies should BGCDSB develop to address [specific AI use] in [specific context]? How can we ensure [specific value/principle] is protected when [specific situation] arises?"
 
-            **Framework Guidance Box Content**
-            Include a contextual reminder that references the specific case:
+            **Framework Guidance Box Content** _(50-100 words max)_
+            Include a brief contextual reminder that references the specific case:
             "When considering [specific AI tool] in [specific setting], remember:
             • FASTER principles guide ethical AI use in Catholic education
             • The 80/20 rule suggests AI for routine tasks, humans for relationships
@@ -208,6 +210,8 @@ def generate_response(prompt, setting, generator_type="education"):
             - Challenge educators to apply frameworks to the particular situation
             - Use names, grade levels, and specific tools mentioned in the scenario
             - Build on the specific tensions and dilemmas presented
+            
+            **REMEMBER: Total output must not exceed 1000 words. Be concise but maintain case-specificity.**
         """
     elif generator_type == "business":
         system_prompt = f"""
