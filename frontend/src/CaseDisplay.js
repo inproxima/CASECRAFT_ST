@@ -10,6 +10,9 @@ const CaseDisplay = ({ caseData }) => {
   if (!caseData) {
     return null;
   }
+  
+  // Debug: log the caseData to see what we're receiving
+  console.log('CaseDisplay received caseData:', caseData);
 
   return (
     <div>
@@ -50,6 +53,10 @@ const CaseDisplay = ({ caseData }) => {
       <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
         <div className="p-8">
           <div className="prose prose-gray max-w-none">
+            <div style={{border: '2px solid red', padding: '10px', marginBottom: '10px'}}>
+              <h4>Debug: Raw caseData length: {caseData?.length || 0}</h4>
+              <h4>Debug: First 100 chars: {caseData?.substring(0, 100) || 'No data'}</h4>
+            </div>
             <ReactMarkdown 
               components={{
                 h1: ({children}) => <h1 className="text-2xl font-bold text-gray-900 mb-4 mt-6 first:mt-0">{children}</h1>,
