@@ -143,7 +143,7 @@ def generate_response(prompt, setting, generator_type="education"):
             - Consider how AI might affect the teacher-student relationship and pastoral care
             - Address questions of equity, access, and digital divide within the school community
 
-            **3. Case-Specific Critical Analysis Questions** _(400-450 words total - approximately 70 words per question)_
+            **3. Case-Specific Critical Analysis Questions** _(450-500 words total - approximately 75-85 words per question)_
             Based on the specific details of this scenario, generate 6 concise, targeted questions that directly reference the AI tool, setting, stakeholders, and dilemmas presented. Each question should be tailored to the case and guide reflection using the FASTER principles and Catholic values.
 
             **Question 1: Appropriate Use of AI (Case-Specific)**
@@ -188,14 +188,6 @@ def generate_response(prompt, setting, generator_type="education"):
             - Address the particular safeguards needed for this type of AI use
             - Connect to broader BGCDSB policies and Catholic education mission
             Example format: "What policies should BGCDSB develop to address [specific AI use] in [specific context]? How can we ensure [specific value/principle] is protected when [specific situation] arises?"
-
-            **Framework Guidance Box Content** _(50-100 words max)_
-            Include a brief contextual reminder that references the specific case:
-            "When considering [specific AI tool] in [specific setting], remember:
-            • FASTER principles guide ethical AI use in Catholic education
-            • The 80/20 rule suggests AI for routine tasks, humans for relationships
-            • Red lines protect sacred aspects of Catholic education
-            • Every decision must honor the dignity of [specific students/stakeholders mentioned]"
 
             **Catholic Education Context Requirements:**
             - Reference Ontario Catholic Graduate Expectations relevant to the specific case
