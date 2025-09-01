@@ -10,9 +10,17 @@ const CaseDisplay = ({ caseData }) => {
   if (!caseData) {
     return null;
   }
-  
-  // Debug: log the caseData to see what we're receiving
-  console.log('CaseDisplay received caseData:', caseData);
+
+  // Remove any debug information that might be prepended to the case
+  let cleanCaseData = caseData;
+  if (typeof caseData === 'string') {
+    // Check if the content starts with debug information
+    const debugPattern = /^Debug:.*?\n.*?Debug:.*?\n/s;
+    if (debugPattern.test(caseData)) {
+      // Remove the debug lines
+      cleanCaseData = caseData.replace(debugPattern, '');
+    }
+  }
 
   return (
     <div>
@@ -23,7 +31,7 @@ const CaseDisplay = ({ caseData }) => {
             variant="outlined"
             startIcon={<ContentCopyIcon />}
             onClick={() => {
-              navigator.clipboard.writeText(caseData);
+              navigator.clipboard.writeText(cleanCaseData);
             }}
             sx={{ textTransform: 'none' }}
           >
@@ -33,7 +41,7 @@ const CaseDisplay = ({ caseData }) => {
             variant="contained"
             startIcon={<DownloadIcon />}
             onClick={() => {
-              const html = marked.parse(caseData || '');
+              const html = marked.parse(cleanCaseData || '');
               const blob = HTMLtoDOCX.asBlob(`<!doctype html><html><head><meta charset="utf-8" /></head><body>${html}</body></html>`);
               const url = URL.createObjectURL(blob);
               const a = document.createElement('a');
@@ -53,10 +61,6 @@ const CaseDisplay = ({ caseData }) => {
       <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
         <div className="p-8">
           <div className="prose prose-gray max-w-none">
-            <div style={{border: '2px solid red', padding: '10px', marginBottom: '10px'}}>
-              <h4>Debug: Raw caseData length: {caseData?.length || 0}</h4>
-              <h4>Debug: First 100 chars: {caseData?.substring(0, 100) || 'No data'}</h4>
-            </div>
             <ReactMarkdown 
               components={{
                 h1: ({children}) => <h1 className="text-2xl font-bold text-gray-900 mb-4 mt-6 first:mt-0">{children}</h1>,
@@ -76,7 +80,7 @@ const CaseDisplay = ({ caseData }) => {
                 blockquote: ({children}) => <blockquote className="border-l-4 border-blue-200 pl-4 py-2 mb-4 bg-blue-50 text-gray-700 italic">{children}</blockquote>
               }}
             >
-              {caseData}
+              {cleanCaseData}
             </ReactMarkdown>
           </div>
         </div>
