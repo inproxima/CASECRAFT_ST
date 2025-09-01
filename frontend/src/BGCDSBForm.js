@@ -11,78 +11,215 @@ const BGCDSBForm = ({ onGenerate, loading = false }) => {
     user_context: '',
   });
 
-  const bgcdsbCategories = {
-    "Instructional AI Use": [
-      "lesson planning with AI assistance",
-      "AI-generated assessment materials",
-      "student use of AI for assignments",
-      "AI for differentiated instruction",
-      "AI feedback on student work"
-    ],
-    "Administrative AI Use": [
-      "AI for report card comments",
-      "attendance and behavior tracking",
-      "parent communication drafting",
-      "IEP documentation support",
-      "scheduling and resource allocation"
-    ],
-    "Student Support & Well-being": [
-      "AI counseling or mental health tools",
-      "AI for identifying at-risk students",
-      "behavior intervention planning",
-      "AI-assisted special education support",
-      "student data analysis for interventions"
-    ],
-    "Assessment & Evaluation": [
-      "AI grading of assignments",
-      "plagiarism and AI detection",
-      "formative assessment generation",
-      "standardized test preparation",
-      "portfolio assessment with AI"
-    ],
-    "Professional Development": [
-      "AI for teacher training",
-      "lesson observation and feedback",
-      "professional learning communities",
-      "curriculum development with AI",
-      "teaching practice reflection"
-    ],
-    "Faith Formation & Catholic Identity": [
-      "AI in religious education",
-      "prayer and liturgy planning",
-      "Catholic social teaching integration",
-      "sacramental preparation support",
-      "faith-based counseling scenarios"
-    ],
-    "Parent & Community Engagement": [
-      "AI for parent communication",
-      "community partnership development",
-      "school newsletter generation",
-      "parent-teacher conference preparation",
-      "fundraising and event planning"
-    ],
-    "Equity & Inclusion": [
-      "AI bias in educational tools",
-      "accessibility support with AI",
-      "multilingual communication tools",
-      "culturally responsive AI use",
-      "digital divide considerations"
-    ],
-    "Data Privacy & Security": [
-      "student data protection",
-      "AI platform selection",
-      "consent and permissions",
-      "data retention policies",
-      "third-party AI tool usage"
-    ],
-    "Emergency & Crisis Situations": [
-      "AI in emergency response",
-      "crisis communication",
-      "online learning transitions",
-      "student safety monitoring",
-      "threat assessment protocols"
-    ]
+  // Categories available based on setting
+  const getCategoriesForSetting = (setting) => {
+    const classroomCategories = {
+      "Instructional AI Use": [
+        "lesson planning with AI assistance",
+        "AI-generated assessment materials",
+        "student use of AI for assignments",
+        "AI for differentiated instruction",
+        "AI feedback on student work"
+      ],
+      "Assessment & Evaluation": [
+        "AI grading of assignments",
+        "plagiarism and AI detection",
+        "formative assessment generation",
+        "standardized test preparation",
+        "portfolio assessment with AI"
+      ],
+      "Student Support & Well-being": [
+        "AI for identifying at-risk students",
+        "behavior intervention planning",
+        "AI-assisted special education support",
+        "student data analysis for interventions",
+        "learning analytics and progress tracking"
+      ],
+      "Faith Formation & Catholic Identity": [
+        "AI in religious education",
+        "prayer and liturgy planning",
+        "Catholic social teaching integration",
+        "sacramental preparation support",
+        "faith-based learning activities"
+      ],
+      "Parent & Community Engagement": [
+        "AI for parent communication",
+        "student progress reporting",
+        "parent-teacher conference preparation",
+        "homework help recommendations",
+        "family engagement strategies"
+      ]
+    };
+
+    const adminCategories = {
+      "Administrative AI Use": [
+        "AI for report card comments",
+        "attendance and behavior tracking",
+        "scheduling and resource allocation",
+        "budget planning and analysis",
+        "enrollment projections"
+      ],
+      "Data Privacy & Security": [
+        "student data protection",
+        "AI platform selection",
+        "consent and permissions",
+        "data retention policies",
+        "third-party AI tool usage"
+      ],
+      "Professional Development": [
+        "AI for teacher training",
+        "performance evaluation support",
+        "professional learning communities",
+        "curriculum development with AI",
+        "teaching practice reflection"
+      ],
+      "Emergency & Crisis Situations": [
+        "AI in emergency response",
+        "crisis communication",
+        "threat assessment protocols",
+        "safety planning",
+        "incident documentation"
+      ],
+      "Equity & Inclusion": [
+        "AI bias in educational tools",
+        "accessibility support with AI",
+        "multilingual communication tools",
+        "culturally responsive AI use",
+        "digital divide considerations"
+      ]
+    };
+
+    const supportCategories = {
+      "Student Support & Well-being": [
+        "AI counseling or mental health tools",
+        "AI for identifying at-risk students",
+        "behavior intervention planning",
+        "crisis intervention support",
+        "wellness program development"
+      ],
+      "Special Education Support": [
+        "IEP documentation with AI",
+        "assistive technology integration",
+        "learning disability assessments",
+        "accommodation planning",
+        "progress monitoring systems"
+      ],
+      "Faith Formation & Catholic Identity": [
+        "spiritual counseling support",
+        "retreat planning with AI",
+        "faith-based counseling scenarios",
+        "chaplaincy support tools",
+        "prayer and meditation resources"
+      ],
+      "Parent & Community Engagement": [
+        "family support services",
+        "community resource connections",
+        "parent education programs",
+        "cultural liaison services",
+        "wraparound service coordination"
+      ]
+    };
+
+    // Map settings to appropriate categories
+    switch(setting) {
+      case 'K-12 Classroom':
+        return classroomCategories;
+      case 'School Administration Office':
+        return adminCategories;
+      case 'Staff Meeting':
+        return { ...classroomCategories, ...adminCategories };
+      case 'Parent-Teacher Conference':
+        return {
+          "Parent & Community Engagement": classroomCategories["Parent & Community Engagement"],
+          "Assessment & Evaluation": classroomCategories["Assessment & Evaluation"],
+          "Student Support & Well-being": classroomCategories["Student Support & Well-being"]
+        };
+      case 'Professional Development Day':
+        return {
+          "Professional Development": adminCategories["Professional Development"],
+          "Instructional AI Use": classroomCategories["Instructional AI Use"],
+          "Data Privacy & Security": adminCategories["Data Privacy & Security"]
+        };
+      case 'Catholic School Council':
+        return adminCategories;
+      case 'Special Education Team':
+        return {
+          "Special Education Support": supportCategories["Special Education Support"],
+          "Student Support & Well-being": supportCategories["Student Support & Well-being"],
+          "Assessment & Evaluation": classroomCategories["Assessment & Evaluation"]
+        };
+      case 'School Board Meeting':
+        return adminCategories;
+      case 'Student Support Services':
+        return supportCategories;
+      case 'Faith Formation Program':
+        return {
+          "Faith Formation & Catholic Identity": classroomCategories["Faith Formation & Catholic Identity"],
+          "Instructional AI Use": classroomCategories["Instructional AI Use"],
+          "Parent & Community Engagement": classroomCategories["Parent & Community Engagement"]
+        };
+      default:
+        return classroomCategories;
+    }
   };
+
+  // Context options based on setting
+  const getContextForSetting = (setting) => {
+    const classroomContexts = [
+      "Grade K-3 Catholic classroom",
+      "Grade 4-6 Catholic classroom", 
+      "Grade 7-8 Catholic classroom",
+      "High school Catholic classroom"
+    ];
+
+    const adminContexts = [
+      "Elementary school administration",
+      "Secondary school administration",
+      "Board office administration",
+      "Multi-school administration"
+    ];
+
+    const communityContexts = [
+      "Urban Catholic school community",
+      "Rural Catholic school community",
+      "Diverse multicultural school",
+      "Parish-connected school"
+    ];
+
+    const specializedContexts = [
+      "Resource/Special Education setting",
+      "French Immersion program",
+      "Indigenous education focus",
+      "Newcomer/ESL program"
+    ];
+
+    switch(setting) {
+      case 'K-12 Classroom':
+        return classroomContexts;
+      case 'School Administration Office':
+        return adminContexts;
+      case 'Staff Meeting':
+        return [...classroomContexts, ...adminContexts];
+      case 'Parent-Teacher Conference':
+        return classroomContexts;
+      case 'Professional Development Day':
+        return [...classroomContexts, ...adminContexts];
+      case 'Catholic School Council':
+        return communityContexts;
+      case 'Special Education Team':
+        return specializedContexts;
+      case 'School Board Meeting':
+        return [...adminContexts, ...communityContexts];
+      case 'Student Support Services':
+        return [...classroomContexts, ...specializedContexts];
+      case 'Faith Formation Program':
+        return [...classroomContexts, ...communityContexts];
+      default:
+        return classroomContexts;
+    }
+  };
+
+
 
   const settingOptions = [
     "K-12 Classroom",
@@ -97,28 +234,31 @@ const BGCDSBForm = ({ onGenerate, loading = false }) => {
     "Faith Formation Program"
   ];
 
-  const contextOptions = [
-    "Grade K-3 Catholic classroom",
-    "Grade 4-6 Catholic classroom",
-    "Grade 7-8 Catholic classroom",
-    "High school Catholic classroom",
-    "Resource/Special Education setting",
-    "School leadership team",
-    "Catholic faith community",
-    "Diverse multicultural school",
-    "Rural Catholic school",
-    "Urban Catholic school"
-  ];
-
-  const [categories] = useState(bgcdsbCategories);
+  // Get dynamic categories and contexts based on current setting
+  const categories = getCategoriesForSetting(formData.setting);
+  const contextOptions = getContextForSetting(formData.setting);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => {
       const newData = { ...prevData, [name]: value };
-      if (name === 'case_category') {
-        newData.options = categories[value][0];
+      
+      // When setting changes, reset category and context to valid options
+      if (name === 'setting') {
+        const newCategories = getCategoriesForSetting(value);
+        const newContexts = getContextForSetting(value);
+        const firstCategory = Object.keys(newCategories)[0];
+        newData.case_category = firstCategory;
+        newData.options = newCategories[firstCategory]?.[0] || '';
+        newData.context = newContexts[0] || '';
       }
+      
+      // When category changes, reset options to first available
+      if (name === 'case_category') {
+        const currentCategories = getCategoriesForSetting(prevData.setting);
+        newData.options = currentCategories[value]?.[0] || '';
+      }
+      
       return newData;
     });
   };
