@@ -3,7 +3,7 @@ import CaseForm from './CaseForm';
 import SocialWorkForm from './SocialWorkForm';
 import NursingForm from './NursingForm';
 import BusinessForm from './BusinessForm';
-import BGCDSBScenarioBuilder from './BGCDSBScenarioBuilder';
+import BGCDSBForm from './BGCDSBForm';
 import CaseDisplay from './CaseDisplay';
 import { generateCase } from './api';
 import { Button, Stack, CircularProgress, Box, Skeleton } from '@mui/material';
@@ -40,40 +40,11 @@ function App() {
       case 'business':
         return <BusinessForm onGenerate={handleGenerate} loading={loading} />;
       case 'bgcdsb':
-        return null; // BGCDSB Builder uses full screen, not sidebar
+        return <BGCDSBForm onGenerate={handleGenerate} loading={loading} />;
       default:
         return <CaseForm onGenerate={handleGenerate} />;
     }
   };
-
-  // Special handling for BGCDSB Builder - show full screen
-  if (selectedGenerator === 'bgcdsb') {
-    return (
-      <div className="min-h-screen bg-gray-50">
-        {/* Top Navigation Bar */}
-        <div className="fixed top-0 left-0 right-0 bg-white shadow-sm border-b z-10">
-          <div className="flex items-center justify-between px-6 py-3">
-            <h1 className="text-2xl font-bold text-gray-800">CaseCraft</h1>
-            <nav>
-              <Stack spacing={1} direction="row">
-                <Button
-                  variant="text"
-                  onClick={() => setSelectedGenerator('education')}
-                  size="small"
-                  sx={{ textTransform: 'none', fontWeight: 'medium' }}
-                >
-                  ← Back to Generators
-                </Button>
-              </Stack>
-            </nav>
-          </div>
-        </div>
-        <div className="pt-16">
-          <BGCDSBScenarioBuilder />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex h-screen bg-gray-50">

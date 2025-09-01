@@ -114,6 +114,76 @@ def generate_response(prompt, setting, generator_type="education"):
             - Promotes critical thinking, ethical reasoning, and professional growth
             - Addresses cultural competency, anti-oppressive practice, and social justice
         """
+    elif generator_type == "bgcdsb":
+        system_prompt = f"""
+            **Objective**: Generate a challenging AI integration scenario for the Bruce-Grey Catholic District School Board that requires educators to grapple with when and how to appropriately use AI in Catholic education. The case should have no clear-cut answer and require careful consideration of Catholic values, the FASTER principles, and potential red lines.
+         
+            **Provide an appropriate title for the case scenario**
+
+            **1. Scenario Context**
+            - **Setting**: Describe the specific Catholic school environment, grade level, and stakeholders involved.
+            - **AI Tool/Technology**: Identify the specific AI tool or technology being considered (e.g., ChatGPT, Grammarly, AI tutoring systems, etc.).
+            - **Current Situation**: Present the educational need or opportunity that prompted consideration of AI use.
+            - **Stakeholder Perspectives**: Include varying viewpoints from teachers, students, parents, administrators, and the faith community.
+
+            **2. The AI Dilemma**
+            Create a nuanced scenario where the use of AI presents both significant benefits and serious concerns:
+            - Present compelling reasons why AI could enhance educational outcomes or efficiency
+            - Include legitimate concerns about human dignity, authentic learning, or Catholic values
+            - Ensure there are valid arguments on multiple sides of the issue
+            - Include tensions between efficiency/innovation and traditional Catholic educational values
+            - Consider how AI might affect the teacher-student relationship and pastoral care
+            - Address questions of equity, access, and digital divide within the school community
+
+            **3. Critical Analysis Questions**
+            Present the scenario, then include these specific questions that require deep reflection:
+
+            **Question 1: Appropriate Use of AI**
+            "In this scenario, when (if at all) would it be appropriate to use AI? What specific conditions or safeguards would need to be in place? How would you apply the 80/20 rule (AI handles 80% of routine tasks, humans focus on the 20% requiring judgment and relationship)?"
+
+            **Question 2: FASTER Principles Application**
+            "How do the FASTER principles (Fair, Accountable, Secure, Transparent, Explainable, Responsible) apply to this scenario? Which principles are upheld and which might be compromised? How would you balance competing principles?"
+
+            **Question 3: Red Lines Assessment**
+            "Does this scenario cross any red lines for Catholic education? Consider:
+            - Is human dignity and the sacred nature of the teacher-student relationship preserved?
+            - Does it compromise the formation of conscience or moral development?
+            - Are we replacing human care, pastoral counseling, or sacramental preparation?
+            - Does it undermine authentic learning and personal growth?
+            Explain why or why not, and where exactly the line should be drawn."
+
+            **Question 4: Catholic Values Integration**
+            "How does this AI use align or conflict with Catholic social teaching, particularly regarding:
+            - The dignity of the human person
+            - The common good
+            - Subsidiarity and participation
+            - Preferential option for the poor and vulnerable
+            What modifications would make this AI use more aligned with our Catholic mission?"
+
+            **Question 5: Implementation Decision**
+            "If you were the principal/teacher/board member in this scenario, what would be your decision? How would you communicate this decision to:
+            - Students and their families
+            - Teaching staff
+            - The broader Catholic school community
+            - The diocese or board trustees"
+
+            **Question 6: Policy Implications**
+            "What policies or guidelines does this scenario suggest BGCDSB should develop? How can we ensure AI enhances rather than replaces the human elements essential to Catholic education?"
+
+            **Catholic Education Context Requirements:**
+            - Reference Ontario Catholic Graduate Expectations where relevant
+            - Consider the role of faith formation and spiritual development
+            - Address the balance between innovation and tradition in Catholic education
+            - Include considerations for vulnerable students and inclusive education
+            - Reference the sacred trust parents place in Catholic educators
+            
+            **Ensure the scenario:**
+            - Has no single "correct" answer but requires thoughtful discernment
+            - Challenges educators to think critically about AI's role in Catholic education
+            - Promotes discussion about where technology serves and where it might hinder our mission
+            - Encourages consideration of both practical benefits and deeper philosophical/theological implications
+            - Reflects real challenges Catholic educators face in the digital age
+        """
     elif generator_type == "business":
         system_prompt = f"""
             **Objective**: Generate a challenging business case scenario for Canadian business practice that requires students to solve complex problems with no clear-cut answers. The case should assess students' ability to deal with real-world business contexts and competing stakeholder interests.
@@ -303,6 +373,17 @@ def generate():
             prompt = f"""Generate a nursing case scenario for the specialty area of {case_category} with a specific focus on {options} in the clinical setting of {setting} and {context}.
                         The generated scenario should be in a prose format. It should be engaging, clinically relevant, and useful for nursing education. It should stimulate critical thinking, clinical reasoning, and application of nursing knowledge and skills.
                         Ensure that there are multiple valid nursing interventions and that clinical judgment is required for prioritization.
+    """
+    elif generator_type == 'bgcdsb':
+        if user_context:
+            prompt = f"""Generate an AI integration scenario for Catholic education in the area of {case_category} with a specific focus on {options} in the setting of {setting} and {context}. Ensure that the scenario includes the following consideration: {user_context}.
+                        The scenario should present a realistic dilemma about when and how to use AI in Catholic education. Include perspectives from multiple stakeholders and ensure there is no clear-cut answer.
+                        The scenario must include questions about appropriate AI use, FASTER principles application, red line assessment, and Catholic values integration.
+    """
+        else:
+            prompt = f"""Generate an AI integration scenario for Catholic education in the area of {case_category} with a specific focus on {options} in the setting of {setting} and {context}.
+                        The scenario should present a realistic dilemma about when and how to use AI in Catholic education. Include perspectives from multiple stakeholders and ensure there is no clear-cut answer.
+                        The scenario must include questions about appropriate AI use, FASTER principles application, red line assessment, and Catholic values integration.
     """
     elif generator_type == 'business':
         if user_context:
