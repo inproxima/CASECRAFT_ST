@@ -422,7 +422,7 @@ const BGCDSBForm = ({ onGenerate, loading = false }) => {
               fontWeight: 'medium'
             }}
           >
-            Generate BGCDSB Scenario
+            Generate Case
           </Button>
         </div>
       </form>
